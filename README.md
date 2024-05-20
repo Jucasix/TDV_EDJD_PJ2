@@ -1,6 +1,6 @@
 # TDV_EDJD_PJ2
 
-- Asteroids Gaming
+- Astroidz Gaming
 
 # Trabalho realizado por:
 
@@ -9,3 +9,15 @@
 - 29848 - André Azevedo
 
 - 29580 - João Carvalho
+
+# Jogabiliade:
+
+
+
+
+# Comentários sobre o código:
+
+
+
+
+# Conclusão:
