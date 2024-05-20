@@ -2,6 +2,10 @@
 
 - Astroidz Gaming
 
+# Introdução:
+
+Este projeto teve por base a criação de um jogo com base no framework Monogame.
+
 # Trabalho realizado por:
 
 - 29579 - Roberto Alvarenga
@@ -10,12 +14,22 @@
 
 - 29580 - João Carvalho
 
-# Jogabiliade:
+# Sobre o Jogo:
+
+- Este jogo ocorre em mundo aberto, onde a câmara segue o player, e o objetivo é tentar sobreviver o maior tempo possível e destruir os inimigos para obter score.   
 
 
+# Sobre o código:
 
+- **Classes:**
 
-# Comentários sobre o código:
+	- Game1.cs: Classe base da framework monogame e principal responsável pela jogabiliade.
+	
+	- Astroid.cs: Nesta classe temos a crição e desenho dos astereoides de forma aleatória e até uma quantiade fixa para não encher o mapa de asteroides, os asteroides podem ser destruidos mas novos serão gerados.
+	
+	- Bullet.cs: Nesta classe temos a crição e desenho das balas tendo em conta a posição de que a dispara.
+	
+	- Enemy.cs: Nesta classe temos a crição das naves inimigas, e é responsável por verificar as suas colisões e também o disparo de balas em direção ao player.
 
 
 
