@@ -156,161 +156,43 @@ namespace TDJ2_Astroidz
                 }
                 asteroidTimer = 0;
             }
-            else
-            {
-                asteroidTimer++;
-            }
+            else {asteroidTimer++;}
+
 
             Matrix playerTransform = Matrix.CreateRotationZ(playerRotation) * Matrix.CreateTranslation(playerPosition);
 
+            //Asteroid collision and updating logic
             foreach (var asteroid in asteroids)
             {
                 if (!asteroid.IsActive) continue;  //Skip inactive asteroids
-                asteroid.Update();
-
-                //Calculate distance from player to asteroid
-                float distanceToPlayer = Vector2.Distance(new Vector2(playerPosition.X, playerPosition.Y), asteroid.position);
-                //Set asteroid as inactive if beyond the threshold distance
-                if (distanceToPlayer > inactiveThreshold)
-                {
-                    asteroid.IsActive = false;
-                }
+                asteroid.Update(playerPosition, inactiveThreshold);
 
                 //Player-Asteroid Collision Detection
-                Matrix asteroidTransform = Matrix.CreateRotationZ(asteroid.rotation) * Matrix.CreateTranslation(new Vector3(asteroid.position, 0));
+                asteroid.CheckCollisionPlayer(playerVertices, playerTransform, ref inertia, playerSpeed, 1.0f, ref PlayerHitPoints, playerPosition);
 
-                if (SATCollision.CheckCollision(playerVertices, playerTransform, asteroid.vertices, asteroidTransform))
+                // Asteroid-Enemy Collision Detection
+                foreach (var enemy in enemies)
                 {
-                    Vector2 collisionNormal = Vector2.Normalize(new Vector2(playerPosition.X, playerPosition.Y) - asteroid.position);
-
-                    //Reflect the player's inertia
-                    Vector3 playerVelocity = inertia * playerSpeed;
-                    Vector3 relativeVelocity = playerVelocity - new Vector3(asteroid.velocity, 0);
-
-                    //Calculate the impact speed along the collision normal
-                    float impactSpeed = Vector3.Dot(relativeVelocity, new Vector3(collisionNormal, 0));
-
-                    if (impactSpeed > 0)
-                        continue; //Objects are separating, no need to adjust velocities
-
-                    //Calculate new velocities based on conservation of momentum
-                    float playerMass = 1.0f; //Assume player mass is 1 for simplicity
-                    float totalMass = playerMass + asteroid.Mass;
-                    float impulse = 2 * impactSpeed / totalMass;
-
-                    Vector3 impulseVector = impulse * asteroid.Mass * new Vector3(collisionNormal, 0);
-                    inertia -= impulseVector / playerSpeed;
-                    inertia *= 0.9f; //Dampen the inertia slightly to simulate energy loss
-
-                    //Ensure a minimum inertia to prevent stopping completely
-                    if (inertia.Length() < 0.1f)
-                    {
-                        inertia = new Vector3(collisionNormal * -0.5f, 0);
-                    }
-
-                    asteroid.HandleCollision(collisionNormal, playerSpeed, playerMass);
-
-
-                    //Calculate the impact force (use the magnitude of the impulse vector)
-                    float impactForce = impulseVector.Length();
-                    //Reduce player's health based on the impact force
-                    float healthReduction = impactForce / 3;
-                    PlayerHitPoints -= healthReduction;
-                    if (PlayerHitPoints < 0) PlayerHitPoints = 0; //Ensure health doesn't go below 0
-                    Console.WriteLine(PlayerHitPoints.ToString());
+                    asteroid.CheckCollisionEnemy(enemy);
                 }
-            }
 
+            }
             //Asteroid-Asteroid Collision Detection
             for (int i = 0; i < asteroids.Count; i++)
             {
                 for (int j = i + 1; j < asteroids.Count; j++)
                 {
-                    Asteroid asteroidA = asteroids[i];
-                    Asteroid asteroidB = asteroids[j];
-
-                    if (!asteroidA.IsActive || !asteroidB.IsActive)
-                        continue;
-
-                    Matrix transformA = Matrix.CreateRotationZ(asteroidA.rotation) * Matrix.CreateTranslation(new Vector3(asteroidA.position, 0));
-                    Matrix transformB = Matrix.CreateRotationZ(asteroidB.rotation) * Matrix.CreateTranslation(new Vector3(asteroidB.position, 0));
-
-                    if (SATCollision.CheckCollision(asteroidA.vertices, transformA, asteroidB.vertices, transformB))
-                    {
-                        Vector2 collisionNormal = Vector2.Normalize(asteroidA.position - asteroidB.position);
-
-                        //Calculate relative velocity
-                        Vector2 relativeVelocity = asteroidA.velocity - asteroidB.velocity;
-
-                        //Calculate the impact speed along the collision normal
-                        float impactSpeed = Vector2.Dot(relativeVelocity, collisionNormal);
-
-                        if (impactSpeed > 0)
-                            continue; //Objects are separating, no need to adjust velocities
-
-                        //Calculate new velocities based on conservation of momentum
-                        float totalMass = asteroidA.Mass + asteroidB.Mass;
-                        float impulse = 2 * impactSpeed / totalMass;
-
-                        asteroidA.velocity -= impulse * asteroidB.Mass * collisionNormal;
-                        asteroidB.velocity += impulse * asteroidA.Mass * collisionNormal;
-
-                        //Dampen the velocities slightly to simulate energy loss
-                        asteroidA.velocity *= 0.9f;
-                        asteroidB.velocity *= 0.9f;
-
-                        //Ensure a minimum velocity to prevent stopping completely
-                        if (asteroidA.velocity.Length() < 0.1f)
-                        {
-                            asteroidA.velocity = collisionNormal * -0.5f;
-                        }
-                        if (asteroidB.velocity.Length() < 0.1f)
-                        {
-                            asteroidB.velocity = collisionNormal * 0.5f;
-                        }
-                    }
+                    asteroids[i].CheckCollisionAsteroid(asteroids[j]);
                 }
             }
 
             //Remove inactive bullets
             bullets.RemoveAll(b => !b.IsActive);
-
+            //Update Bullets
             foreach (var bullet in bullets)
             {
                 bullet.Update(playerPosition, inactiveThreshold);
-
-                if (bullet.Faction != 1) //Not Player Faction
-                {
-                    if (SATCollision.CheckCollision(new VertexPositionColor[] {  new VertexPositionColor(new Vector3(bullet.Position, 0), Color.White),  new VertexPositionColor(new Vector3(bullet.Position + new Vector2(1, 0), 0), Color.White) }, Matrix.Identity, playerVertices, playerTransform))
-                    {
-                        bullet.IsActive = false;
-                        PlayerHitPoints -= 10f;
-                        if (PlayerHitPoints < 0) PlayerHitPoints = 0;
-                        Console.WriteLine(PlayerHitPoints.ToString());
-                    }
-                }
-
-                //Check collision with asteroids
-                foreach (var asteroid in asteroids)
-                {
-                    if (!asteroid.IsActive) continue;
-
-                    Matrix asteroidTransform = Matrix.CreateRotationZ(asteroid.rotation) * Matrix.CreateTranslation(new Vector3(asteroid.position, 0));
-                    if (SATCollision.CheckCollision(new VertexPositionColor[] {
-                    new VertexPositionColor(new Vector3(bullet.Position, 0), Color.White),
-                    new VertexPositionColor(new Vector3(bullet.Position + new Vector2(1, 0), 0), Color.White)
-                }, Matrix.Identity, asteroid.vertices, asteroidTransform))
-                        {
-                            bullet.IsActive = false;
-                            asteroid.Hitpoints -= 20f;
-                            if (asteroid.Hitpoints <= 0)
-                            {
-                                asteroid.IsActive = false;
-                            }
-                            break; //No need to check other asteroids if a collision is detected
-                        }
-                    }
-            
+                bullet.HandleCollisions(asteroids, enemies, playerVertices, playerTransform, ref PlayerHitPoints);
             }
 
             //Spawn enemies at intervals
@@ -320,52 +202,14 @@ namespace TDJ2_Astroidz
                 SpawnEnemy();
                 enemySpawnTimer = 0;
             }
-
             //Update enemies
             foreach (var enemy in enemies)
             {
-                enemy.Update(new Vector2(playerPosition.X, playerPosition.Y), gameTime);
-
-                //Check for collisions between player and enemies
-
-                if (enemy.CheckCollision(playerVertices, playerTransform))
-                {
-                    //Handle player-enemy collision
-                    Vector2 collisionNormal = Vector2.Normalize(new Vector2(playerPosition.X, playerPosition.Y) - enemy.Position);
-                    Vector3 playerVelocity = inertia * playerSpeed;
-                    Vector3 relativeVelocity = playerVelocity - new Vector3(enemy.Velocity, 0);
-
-                    float impactSpeed = Vector3.Dot(relativeVelocity, new Vector3(collisionNormal, 0));
-                    if (impactSpeed > 0)
-                        continue;
-
-                    float playerMass = 1.0f;
-                    float totalMass = playerMass + 1.0f; //Assuming enemy mass is also 1 for simplicity
-                    float impulse = 2 * impactSpeed / totalMass;
-                    Vector3 impulseVector = impulse * 1.0f * new Vector3(collisionNormal, 0);
-                    inertia -= impulseVector / playerSpeed;
-                    inertia *= 0.9f;
-
-                    if (inertia.Length() < 0.1f)
-                    {
-                        inertia = new Vector3(collisionNormal * -0.5f, 0);
-                    }
-
-                    //Reduce player's health based on the impact force
-                    float impactForce = impulseVector.Length();
-                    float healthReduction = impactForce / 10;
-                    PlayerHitPoints -= healthReduction;
-                    if (PlayerHitPoints < 0) PlayerHitPoints = 0;
-                    Console.WriteLine(PlayerHitPoints.ToString());
-
-                    //Handle enemy damage if necessary
-                    enemy.HitPoints -= healthReduction;
-                    if (enemy.HitPoints <= 0) enemy.IsActive = false;
-                }
+                enemy.Update(new Vector2(playerPosition.X, playerPosition.Y), gameTime, playerVertices, playerTransform, ref inertia, playerSpeed, ref PlayerHitPoints, asteroids);
             }
-
             //Remove inactive enemies
             enemies.RemoveAll(e => !e.IsActive);
+
 
             base.Update(gameTime);
         }
@@ -412,7 +256,7 @@ namespace TDJ2_Astroidz
             float speed = 300f;
             float fireRate = 0.2f;
             float hitPoints = 100f;
-            enemies.Add(new Enemy(position, speed, fireRate, hitPoints, playerVertices)); //Pass playerVertices
+            enemies.Add(new Enemy(position, speed, fireRate, hitPoints, playerVertices, 1));
         }
 
 
