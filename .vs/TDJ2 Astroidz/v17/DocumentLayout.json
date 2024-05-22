@@ -1,0 +1,92 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\utilizador\\OneDrive - Instituto Polit\u00E9cnico do C\u00E1vado e do Ave\\01_Disciplinas\\TDV\\VS\\TDV_EDJD_PJ2\\TDV_EDJD_PJ2\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{52F91EF2-2A5B-4FA8-A894-371F26BA1976}|TDJ2 Astroidz.csproj|c:\\users\\utilizador\\onedrive - instituto polit\u00E9cnico do c\u00E1vado e do ave\\01_disciplinas\\tdv\\vs\\tdv_edjd_pj2\\tdv_edjd_pj2\\game1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{52F91EF2-2A5B-4FA8-A894-371F26BA1976}|TDJ2 Astroidz.csproj|solutionrelative:game1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{52F91EF2-2A5B-4FA8-A894-371F26BA1976}|TDJ2 Astroidz.csproj|c:\\users\\utilizador\\onedrive - instituto polit\u00E9cnico do c\u00E1vado e do ave\\01_disciplinas\\tdv\\vs\\tdv_edjd_pj2\\tdv_edjd_pj2\\asteroid.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{52F91EF2-2A5B-4FA8-A894-371F26BA1976}|TDJ2 Astroidz.csproj|solutionrelative:asteroid.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{52F91EF2-2A5B-4FA8-A894-371F26BA1976}|TDJ2 Astroidz.csproj|c:\\users\\utilizador\\onedrive - instituto polit\u00E9cnico do c\u00E1vado e do ave\\01_disciplinas\\tdv\\vs\\tdv_edjd_pj2\\tdv_edjd_pj2\\bullet.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{52F91EF2-2A5B-4FA8-A894-371F26BA1976}|TDJ2 Astroidz.csproj|solutionrelative:bullet.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{52F91EF2-2A5B-4FA8-A894-371F26BA1976}|TDJ2 Astroidz.csproj|c:\\users\\utilizador\\onedrive - instituto polit\u00E9cnico do c\u00E1vado e do ave\\01_disciplinas\\tdv\\vs\\tdv_edjd_pj2\\tdv_edjd_pj2\\enemy.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{52F91EF2-2A5B-4FA8-A894-371F26BA1976}|TDJ2 Astroidz.csproj|solutionrelative:enemy.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 4,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Asteroid.cs",
+              "DocumentMoniker": "C:\\Users\\utilizador\\OneDrive - Instituto Polit\u00E9cnico do C\u00E1vado e do Ave\\01_Disciplinas\\TDV\\VS\\TDV_EDJD_PJ2\\TDV_EDJD_PJ2\\Asteroid.cs",
+              "RelativeDocumentMoniker": "Asteroid.cs",
+              "ToolTip": "C:\\Users\\utilizador\\OneDrive - Instituto Polit\u00E9cnico do C\u00E1vado e do Ave\\01_Disciplinas\\TDV\\VS\\TDV_EDJD_PJ2\\TDV_EDJD_PJ2\\Asteroid.cs",
+              "RelativeToolTip": "Asteroid.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-22T11:18:02.435Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Enemy.cs",
+              "DocumentMoniker": "C:\\Users\\utilizador\\OneDrive - Instituto Polit\u00E9cnico do C\u00E1vado e do Ave\\01_Disciplinas\\TDV\\VS\\TDV_EDJD_PJ2\\TDV_EDJD_PJ2\\Enemy.cs",
+              "RelativeDocumentMoniker": "Enemy.cs",
+              "ToolTip": "C:\\Users\\utilizador\\OneDrive - Instituto Polit\u00E9cnico do C\u00E1vado e do Ave\\01_Disciplinas\\TDV\\VS\\TDV_EDJD_PJ2\\TDV_EDJD_PJ2\\Enemy.cs",
+              "RelativeToolTip": "Enemy.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-22T11:17:45.084Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Bullet.cs",
+              "DocumentMoniker": "C:\\Users\\utilizador\\OneDrive - Instituto Polit\u00E9cnico do C\u00E1vado e do Ave\\01_Disciplinas\\TDV\\VS\\TDV_EDJD_PJ2\\TDV_EDJD_PJ2\\Bullet.cs",
+              "RelativeDocumentMoniker": "Bullet.cs",
+              "ToolTip": "C:\\Users\\utilizador\\OneDrive - Instituto Polit\u00E9cnico do C\u00E1vado e do Ave\\01_Disciplinas\\TDV\\VS\\TDV_EDJD_PJ2\\TDV_EDJD_PJ2\\Bullet.cs",
+              "RelativeToolTip": "Bullet.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-22T11:17:42.839Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Game1.cs",
+              "DocumentMoniker": "C:\\Users\\utilizador\\OneDrive - Instituto Polit\u00E9cnico do C\u00E1vado e do Ave\\01_Disciplinas\\TDV\\VS\\TDV_EDJD_PJ2\\TDV_EDJD_PJ2\\Game1.cs",
+              "RelativeDocumentMoniker": "Game1.cs",
+              "ToolTip": "C:\\Users\\utilizador\\OneDrive - Instituto Polit\u00E9cnico do C\u00E1vado e do Ave\\01_Disciplinas\\TDV\\VS\\TDV_EDJD_PJ2\\TDV_EDJD_PJ2\\Game1.cs",
+              "RelativeToolTip": "Game1.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-22T11:17:48.058Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

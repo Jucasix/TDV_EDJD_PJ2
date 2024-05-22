@@ -273,7 +273,7 @@ namespace TDJ2_Astroidz
             Vector2 position = new Vector2(random.Next(0, GraphicsDevice.Viewport.Width), random.Next(0, GraphicsDevice.Viewport.Height));
             float speed = 300f;
             float fireRate = 0.2f;
-            float hitPoints = 100f;
+            float hitPoints = 50f;
             enemies.Add(new Enemy(position, speed, fireRate, hitPoints, playerVertices, 1));
         }
 

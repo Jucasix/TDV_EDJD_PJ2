@@ -113,13 +113,13 @@ namespace TDJ2_Astroidz
 
                 //Reduce player's health based on the impact force
                 float impactForce = impulseVector.Length();
-                float healthReduction = impactForce / 10;
+                float healthReduction = impactForce / 1000;
                 playerHitPoints -= healthReduction;
                 if (playerHitPoints < 0) playerHitPoints = 0;
                 Console.WriteLine(playerHitPoints.ToString());
 
                 //Handle enemy damage if necessary
-                HitPoints -= healthReduction;
+                HitPoints -= healthReduction * 1000;
                 if (HitPoints <= 0) IsActive = false;
             }
         }

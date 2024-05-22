@@ -85,7 +85,7 @@ public class Bullet
             if (!enemy.IsActive) continue;
 
             Matrix enemyTransform = Matrix.CreateRotationZ(enemy.Rotation) * Matrix.CreateTranslation(new Vector3(enemy.Position, 0));
-            if (SATCollision.CheckCollision(
+            if (Faction != 2 && SATCollision.CheckCollision(
                     new VertexPositionColor[] {
                     new VertexPositionColor(new Vector3(Position, 0), Color.White),
                     new VertexPositionColor(new Vector3(Position + new Vector2(1, 0), 0), Color.White)
@@ -95,7 +95,7 @@ public class Bullet
                     enemyTransform))
             {
                 IsActive = false;
-                enemy.HitPoints -= 20f;
+                enemy.HitPoints -= 50f;
                 if (enemy.HitPoints <= 0) enemy.IsActive = false;
                 return;
             }

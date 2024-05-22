@@ -79,7 +79,7 @@ public class Asteroid
             //Calculate the impact force (use the magnitude of the impulse vector)
             float impactForce = impulseVector.Length();
             //Reduce player's health based on the impact force
-            float healthReduction = impactForce / 3;
+            float healthReduction = impactForce / 2;
             playerHitPoints -= healthReduction;
             if (playerHitPoints < 0) playerHitPoints = 0; //Ensure health doesn't go below 0
             Console.WriteLine(playerHitPoints.ToString());
