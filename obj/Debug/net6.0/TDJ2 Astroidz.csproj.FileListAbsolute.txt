@@ -23,8 +23,8 @@ C:\Users\HP\source\repos\TDJ2 Astroidz\obj\Debug\net6.0\refint\TDJ2 Astroidz.dll
 C:\Users\HP\source\repos\TDJ2 Astroidz\obj\Debug\net6.0\TDJ2 Astroidz.pdb
 C:\Users\HP\source\repos\TDJ2 Astroidz\obj\Debug\net6.0\TDJ2 Astroidz.genruntimeconfig.cache
 C:\Users\HP\source\repos\TDJ2 Astroidz\obj\Debug\net6.0\ref\TDJ2 Astroidz.dll
-C:\Users\HP\source\repos\TDJ2 Astroidz\bin\Debug\net6.0\Content\asteroid.png
-C:\Users\HP\source\repos\TDJ2 Astroidz\bin\Debug\net6.0\Content\playerShip.png
-C:\Users\HP\source\repos\TDJ2 Astroidz\bin\Debug\net6.0\Content\bin\DesktopGL\Content\asteroid.xnb
-C:\Users\HP\source\repos\TDJ2 Astroidz\bin\Debug\net6.0\Content\bin\DesktopGL\Content\playerShip.xnb
 C:\Users\HP\source\repos\TDJ2 Astroidz\bin\Debug\net6.0\Content\Enemy02.xnb
+C:\Users\HP\source\repos\TDJ2 Astroidz\bin\Debug\net6.0\Content\Enemy01.xnb
+C:\Users\HP\source\repos\TDJ2 Astroidz\bin\Debug\net6.0\Content\Player01.xnb
+C:\Users\HP\source\repos\TDJ2 Astroidz\bin\Debug\net6.0\Content\Projectiles.xnb
+C:\Users\HP\source\repos\TDJ2 Astroidz\bin\Debug\net6.0\Content\Thursters.xnb

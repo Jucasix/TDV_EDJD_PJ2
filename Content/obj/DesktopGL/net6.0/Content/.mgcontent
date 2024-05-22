@@ -4,11 +4,15 @@
   <Platform>DesktopGL</Platform>
   <Config />
   <SourceFiles>
-    <File>C:/Users/HP/source/repos/TDJ2 Astroidz/Content/bin/DesktopGL/Content/asteroid.png</File>
-    <File>C:/Users/HP/source/repos/TDJ2 Astroidz/Content/bin/DesktopGL/Content/playerShip.png</File>
+    <File>C:/Users/HP/source/repos/TDJ2 Astroidz/Content/Enemy01.png</File>
     <File>C:/Users/HP/source/repos/TDJ2 Astroidz/Content/Enemy02.png</File>
+    <File>C:/Users/HP/source/repos/TDJ2 Astroidz/Content/Player01.png</File>
+    <File>C:/Users/HP/source/repos/TDJ2 Astroidz/Content/Projectiles.png</File>
+    <File>C:/Users/HP/source/repos/TDJ2 Astroidz/Content/Thursters.png</File>
   </SourceFiles>
   <DestFiles>
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />

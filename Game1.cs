@@ -36,6 +36,7 @@ namespace TDJ2_Astroidz
         private int enemySpawnTimer = 0;
         private const int EnemySpawnInterval = 200;
 
+        private Texture2D playerTexture;
         private Texture2D enemyTexture;
 
 
@@ -62,10 +63,11 @@ namespace TDJ2_Astroidz
                 Projection = Matrix.CreateOrthographicOffCenter(0, GraphicsDevice.Viewport.Width, GraphicsDevice.Viewport.Height, 0, 0, 1)
             };
 
-            // Load enemy texture
+            //Load textures
+            playerTexture = Content.Load<Texture2D>("Player01");
             enemyTexture = Content.Load<Texture2D>("Enemy02");
 
-            //Define player vertices to draw a triangle
+            //Define player vertices for collisions
             playerVertices = new VertexPositionColor[3];
             playerVertices[0] = new VertexPositionColor(new Vector3(0, 20, 0), Color.White);
             playerVertices[1] = new VertexPositionColor(new Vector3(-10, -10, 0), Color.White);
@@ -277,11 +279,10 @@ namespace TDJ2_Astroidz
             //Set the player's position to the center of the screen
             Vector3 screenCenter = new Vector3(GraphicsDevice.Viewport.Width / 2, GraphicsDevice.Viewport.Height / 2, 0);
 
-            //Transform player vertices with rotation
-            _basicEffect.World = Matrix.CreateRotationZ(playerRotation) * Matrix.CreateTranslation(screenCenter);
-            _basicEffect.View = Matrix.Identity;
-            _basicEffect.CurrentTechnique.Passes[0].Apply();
-            GraphicsDevice.DrawUserPrimitives(PrimitiveType.TriangleList, playerVertices, 0, 1);
+            // Draw the player sprite
+            Vector2 playerOrigin = new Vector2(playerTexture.Width / 2, playerTexture.Height / 2);
+            _spriteBatch.Draw(playerTexture, new Vector2(screenCenter.X, screenCenter.Y), null, Color.White, playerRotation + MathHelper.PiOver2*2, playerOrigin, 1.0f, SpriteEffects.None, 0f);
+
 
             //Adjust the view matrix for the asteroids and other objects
             Matrix cameraTranslation = Matrix.CreateTranslation(screenCenter - playerPosition);
