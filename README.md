@@ -16,7 +16,9 @@ Este projeto teve por base a criação de um jogo com base no framework Monogame
 
 # Sobre o Jogo:
 
-- Este jogo ocorre em mundo aberto, onde a câmara segue o player, e o objetivo é tentar sobreviver o maior tempo possível e destruir os inimigos para obter score.   
+- Este jogo ocorre em mundo aberto, onde a câmara segue o player, e o objetivo é tentar sobreviver o maior tempo possível e destruir os inimigos para obter score.
+
+- Para jogar usa-se as teclas (awsd) e o rato para orientar a direção do player e o botãonesquerdo para disparar.   
 
 
 # Sobre o código:
