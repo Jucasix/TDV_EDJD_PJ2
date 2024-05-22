@@ -50,25 +50,25 @@ public class Asteroid
         {
             Vector2 collisionNormal = Vector2.Normalize(new Vector2(playerPos.X, playerPos.Y) - position);
 
-            // Reflect the player's inertia
+            //Reflect the player's inertia
             Vector3 playerVelocity = inertia * playerSpeed;
             Vector3 relativeVelocity = playerVelocity - new Vector3(velocity, 0);
 
-            // Calculate the impact speed along the collision normal
+            //Calculate the impact speed along the collision normal
             float impactSpeed = Vector3.Dot(relativeVelocity, new Vector3(collisionNormal, 0));
 
             if (impactSpeed > 0)
-                return false; // Objects are separating, no need to adjust velocities
+                return false; //Objects are separating, no need to adjust velocities
 
-            // Calculate new velocities based on conservation of momentum
+            //Calculate new velocities based on conservation of momentum
             float totalMass = playerMass + Mass;
             float impulse = 2 * impactSpeed / totalMass;
 
             Vector3 impulseVector = impulse * Mass * new Vector3(collisionNormal, 0);
             inertia -= impulseVector / playerSpeed;
-            inertia *= 0.9f; // Dampen the inertia slightly to simulate energy loss
+            inertia *= 0.9f; //Dampen the inertia slightly to simulate energy loss
 
-            // Ensure a minimum inertia to prevent stopping completely
+            //Ensure a minimum inertia to prevent stopping completely
             if (inertia.Length() < 0.1f)
             {
                 inertia = new Vector3(collisionNormal * -0.5f, 0);
@@ -76,12 +76,12 @@ public class Asteroid
 
             HandleCollision(collisionNormal, playerSpeed, playerMass);
 
-            // Calculate the impact force (use the magnitude of the impulse vector)
+            //Calculate the impact force (use the magnitude of the impulse vector)
             float impactForce = impulseVector.Length();
-            // Reduce player's health based on the impact force
+            //Reduce player's health based on the impact force
             float healthReduction = impactForce / 3;
             playerHitPoints -= healthReduction;
-            if (playerHitPoints < 0) playerHitPoints = 0; // Ensure health doesn't go below 0
+            if (playerHitPoints < 0) playerHitPoints = 0; //Ensure health doesn't go below 0
             Console.WriteLine(playerHitPoints.ToString());
 
             return true;
@@ -125,26 +125,26 @@ public class Asteroid
     {
         Vector2 collisionNormal = Vector2.Normalize(position - enemy.Position);
 
-        // Calculate relative velocity
+        //Calculate relative velocity
         Vector2 relativeVelocity = velocity - enemy.Velocity;
 
-        // Calculate the impact speed along the collision normal
+        //Calculate the impact speed along the collision normal
         float impactSpeed = Vector2.Dot(relativeVelocity, collisionNormal);
 
-        if (impactSpeed > 0) return; // Objects are separating, no need to adjust velocities
+        if (impactSpeed > 0) return; //Objects are separating, no need to adjust velocities
 
-        // Calculate new velocities based on conservation of momentum
+        //Calculate new velocities based on conservation of momentum
         float totalMass = Mass + enemy.Mass;
-        float impulse = (2 * impactSpeed / totalMass) * 0.1f; // Scale down the impulse
+        float impulse = (2 * impactSpeed / totalMass) * 0.1f; //Scale down the impulse
 
         velocity -= impulse * enemy.Mass * collisionNormal;
         enemy.Velocity += impulse * Mass * collisionNormal;
 
-        // Dampen the velocities slightly to simulate energy loss
-        velocity *= 0.8f; // Increase damping
-        enemy.Velocity *= 0.8f; // Increase damping
+        //Dampen the velocities slightly to simulate energy loss
+        velocity *= 0.8f; //Increase damping
+        enemy.Velocity *= 0.8f; //Increase damping
 
-        // Ensure a minimum velocity to prevent stopping completely
+        //Ensure a minimum velocity to prevent stopping completely
         if (velocity.Length() < 0.1f)
         {
             velocity = collisionNormal * -0.5f;
@@ -154,12 +154,12 @@ public class Asteroid
             enemy.Velocity = collisionNormal * 0.5f;
         }
 
-        // Apply damage to both asteroid and enemy
-        float damage = 10f; // Arbitrary damage value
+        //Apply damage to both asteroid and enemy
+        float damage = 10f; //Arbitrary damage value
         Hitpoints -= damage;
         enemy.HitPoints -= damage;
 
-        // Deactivate if hitpoints are below zero
+        //Deactivate if hitpoints are below zero
         if (Hitpoints <= 0) IsActive = false;
         if (enemy.HitPoints <= 0) enemy.IsActive = false;
     }
@@ -176,27 +176,27 @@ public class Asteroid
         {
             Vector2 collisionNormal = Vector2.Normalize(this.position - otherAsteroid.position);
 
-            // Calculate relative velocity
+            //Calculate relative velocity
             Vector2 relativeVelocity = this.velocity - otherAsteroid.velocity;
 
-            // Calculate the impact speed along the collision normal
+            //Calculate the impact speed along the collision normal
             float impactSpeed = Vector2.Dot(relativeVelocity, collisionNormal);
 
             if (impactSpeed > 0)
-                return; // Objects are separating, no need to adjust velocities
+                return; //Objects are separating, no need to adjust velocities
 
-            // Calculate new velocities based on conservation of momentum
+            //Calculate new velocities based on conservation of momentum
             float totalMass = this.Mass + otherAsteroid.Mass;
             float impulse = 2 * impactSpeed / totalMass;
 
             this.velocity -= impulse * otherAsteroid.Mass * collisionNormal;
             otherAsteroid.velocity += impulse * this.Mass * collisionNormal;
 
-            // Dampen the velocities slightly to simulate energy loss
+            //Dampen the velocities slightly to simulate energy loss
             this.velocity *= 0.9f;
             otherAsteroid.velocity *= 0.9f;
 
-            // Ensure a minimum velocity to prevent stopping completely
+            //Ensure a minimum velocity to prevent stopping completely
             if (this.velocity.Length() < 0.1f)
             {
                 this.velocity = collisionNormal * -0.5f;

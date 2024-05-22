@@ -51,7 +51,7 @@ namespace TDJ2_Astroidz
             float rayLength = 100f;
             if (Raycast(Position, direction, rayLength, asteroids, out hitAsteroid))
             {
-                // Avoidance maneuver
+                //Avoidance maneuver
                 Vector2 avoidanceDirection = Vector2.Transform(direction, Matrix.CreateRotationZ(MathHelper.PiOver2));
                 direction = (avoidanceDirection * 7.5f + direction * 0.5f);
                 direction.Normalize();
@@ -61,8 +61,11 @@ namespace TDJ2_Astroidz
             Velocity = direction * Speed;
             Position += Velocity * (float)gameTime.ElapsedGameTime.TotalSeconds;
 
-            //Update rotation to face the player
-            Rotation = (float)Math.Atan2(direction.Y, direction.X);
+            //Update rotation to face the movement direction
+            if (Velocity.LengthSquared() > 0)
+            {
+                Rotation = (float)Math.Atan2(Velocity.Y, Velocity.X) + MathHelper.PiOver2;
+            }
 
             //Update firing logic
             fireTimer += (float)gameTime.ElapsedGameTime.TotalSeconds;
@@ -72,7 +75,7 @@ namespace TDJ2_Astroidz
                 fireTimer = 0f;
             }
 
-            // Check and handle collision with player
+            //Check and handle collision with player
             HandlePlayerCollision(playerVertices, playerTransform, ref inertia, playerSpeed, ref playerHitPoints, new Vector3(playerPosition, 0));
         }
 
@@ -96,7 +99,7 @@ namespace TDJ2_Astroidz
                     return;
 
                 float playerMass = 1.0f;
-                float enemyMass = 1.0f; // Assuming enemy mass is also 1 for simplicity
+                float enemyMass = 1.0f; //Assuming enemy mass is also 1 for simplicity
                 float totalMass = playerMass + enemyMass;
                 float impulse = 2 * impactSpeed / totalMass;
                 Vector3 impulseVector = impulse * enemyMass * new Vector3(collisionNormal, 0);
@@ -108,14 +111,14 @@ namespace TDJ2_Astroidz
                     inertia = new Vector3(collisionNormal * -0.5f, 0);
                 }
 
-                // Reduce player's health based on the impact force
+                //Reduce player's health based on the impact force
                 float impactForce = impulseVector.Length();
                 float healthReduction = impactForce / 10;
                 playerHitPoints -= healthReduction;
                 if (playerHitPoints < 0) playerHitPoints = 0;
                 Console.WriteLine(playerHitPoints.ToString());
 
-                // Handle enemy damage if necessary
+                //Handle enemy damage if necessary
                 HitPoints -= healthReduction;
                 if (HitPoints <= 0) IsActive = false;
             }
@@ -152,14 +155,14 @@ namespace TDJ2_Astroidz
         {
             distance = 0f;
 
-            // Create the asteroid's bounding box
+            //Create the asteroid's bounding box
             var asteroidTransform = Matrix.CreateRotationZ(asteroid.rotation) * Matrix.CreateTranslation(new Vector3(asteroid.position, 0));
             var asteroidBounds = CreateBoundingBox(asteroid.vertices, asteroidTransform);
 
-            // Create the ray
+            //Create the ray
             Ray ray = new Ray(new Vector3(origin, 0), new Vector3(direction, 0));
 
-            // Check for intersection
+            //Check for intersection
             float? intersect = ray.Intersects(asteroidBounds);
             if (intersect.HasValue && intersect.Value <= length)
             {

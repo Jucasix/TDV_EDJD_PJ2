@@ -6,8 +6,10 @@
   <SourceFiles>
     <File>C:/Users/HP/source/repos/TDJ2 Astroidz/Content/bin/DesktopGL/Content/asteroid.png</File>
     <File>C:/Users/HP/source/repos/TDJ2 Astroidz/Content/bin/DesktopGL/Content/playerShip.png</File>
+    <File>C:/Users/HP/source/repos/TDJ2 Astroidz/Content/Enemy02.png</File>
   </SourceFiles>
   <DestFiles>
+    <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />
   </DestFiles>

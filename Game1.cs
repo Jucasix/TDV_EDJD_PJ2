@@ -36,6 +36,9 @@ namespace TDJ2_Astroidz
         private int enemySpawnTimer = 0;
         private const int EnemySpawnInterval = 200;
 
+        private Texture2D enemyTexture;
+
+
         public Game1()
         {
             _graphics = new GraphicsDeviceManager(this);
@@ -58,6 +61,9 @@ namespace TDJ2_Astroidz
                 VertexColorEnabled = true,
                 Projection = Matrix.CreateOrthographicOffCenter(0, GraphicsDevice.Viewport.Width, GraphicsDevice.Viewport.Height, 0, 0, 1)
             };
+
+            // Load enemy texture
+            enemyTexture = Content.Load<Texture2D>("Enemy02");
 
             //Define player vertices to draw a triangle
             playerVertices = new VertexPositionColor[3];
@@ -170,7 +176,7 @@ namespace TDJ2_Astroidz
                 //Player-Asteroid Collision Detection
                 asteroid.CheckCollisionPlayer(playerVertices, playerTransform, ref inertia, playerSpeed, 1.0f, ref PlayerHitPoints, playerPosition);
 
-                // Asteroid-Enemy Collision Detection
+                //Asteroid-Enemy Collision Detection
                 foreach (var enemy in enemies)
                 {
                     asteroid.CheckCollisionEnemy(enemy);
@@ -266,6 +272,8 @@ namespace TDJ2_Astroidz
         {
             GraphicsDevice.Clear(Color.Black);
 
+            _spriteBatch.Begin();
+
             //Set the player's position to the center of the screen
             Vector3 screenCenter = new Vector3(GraphicsDevice.Viewport.Width / 2, GraphicsDevice.Viewport.Height / 2, 0);
 
@@ -296,15 +304,16 @@ namespace TDJ2_Astroidz
 
             foreach (var enemy in enemies)
             {
-                Matrix asteroidWorldMatrix = Matrix.CreateRotationZ(enemy.Rotation) * Matrix.CreateTranslation(new Vector3(enemy.Position, 0));
+                // Transform enemy position to screen space
+                Vector3 enemyScreenPosition = Vector3.Transform(new Vector3(enemy.Position, 0), cameraTranslation);
 
-                _basicEffect.World = asteroidWorldMatrix;
-                _basicEffect.View = cameraTranslation;
-                _basicEffect.CurrentTechnique.Passes[0].Apply();
+                // Draw the enemy texture at the transformed position with the correct rotation
+                Vector2 enemyOrigin = new Vector2(enemyTexture.Width / 2, enemyTexture.Height / 2);
+                _spriteBatch.Draw(enemyTexture, new Vector2(enemyScreenPosition.X, enemyScreenPosition.Y), null, Color.White, enemy.Rotation, enemyOrigin, 1.0f, SpriteEffects.None, 0f);
 
                 Debug.DrawLine(GraphicsDevice,
-                               Vector3.Transform(new Vector3(enemy.Position.X, enemy.Position.Y, 0), cameraTranslation),
-                               Vector3.Transform(new Vector3(enemy.Position.X, enemy.Position.Y, 0) + new Vector3(enemy.Velocity.X, enemy.Velocity.Y, 0), cameraTranslation),
+                               enemyScreenPosition,
+                               enemyScreenPosition + new Vector3(enemy.Velocity.X, enemy.Velocity.Y, 0),
                                Color.Purple);
             }
 
@@ -317,6 +326,8 @@ namespace TDJ2_Astroidz
                                Vector3.Transform(new Vector3(bullet.Position.X, bullet.Position.Y, 0) + new Vector3(bullet.Velocity.X, bullet.Velocity.Y, 0) * 1, cameraTranslation),
                                Color.Red);
             }
+
+            _spriteBatch.End();
 
             base.Draw(gameTime);
         }

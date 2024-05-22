@@ -42,7 +42,7 @@ public class Bullet
     {
         if (!IsActive) return;
 
-        // Check collision with player
+        //Check collision with player
         if (Faction != 1 && SATCollision.CheckCollision(
                 new VertexPositionColor[] {
                     new VertexPositionColor(new Vector3(Position, 0), Color.White),
@@ -57,7 +57,7 @@ public class Bullet
             if (playerHitPoints < 0) playerHitPoints = 0;
         }
 
-        // Check collision with asteroids
+        //Check collision with asteroids
         foreach (var asteroid in asteroids)
         {
             if (!asteroid.IsActive) continue;
@@ -79,7 +79,7 @@ public class Bullet
             }
         }
 
-        // Check collision with enemies
+        //Check collision with enemies
         foreach (var enemy in enemies)
         {
             if (!enemy.IsActive) continue;
