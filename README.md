@@ -25,7 +25,7 @@ Este projeto teve por base a criação de um jogo com base no framework Monogame
 
 - **Classes:**
 
-	- Game1.cs: Classe base da framework monogame e principal responsável pela jogabiliade e pelo player. É responsável por fazer o load content para gerar os asteroides e inimigos aleatóriamente e controlo e implementação do player, aqui usamos os métodos implementados nas outars classes. Também é aqui que se faz todo o draw. É responsável por método de debug e colisão que são usadas em outras partes do código. 
+	- Game1.cs: Classe base da framework monogame e principal responsável pela jogabiliade e pelo player. É responsável por fazer o load content para gerar os asteroides e inimigos aleatóriamente e controlo e implementação do player, aqui usamos os métodos implementados nas outras classes. Também é aqui que se faz todo o draw. É responsável por método de debug e colisão que são usadas em outras partes do código. 
 	
 	- Astroid.cs: Nesta classe temos os astereoides, aqui é verificada a lógica de movimento e de colisão entre todos os objetos e asteroídes.
 	
