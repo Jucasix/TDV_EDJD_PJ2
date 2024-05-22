@@ -34,7 +34,7 @@ Este projeto teve por base a criação de um jogo com base no framework Monogame
 	- Enemy.cs: Nesta classe temos a crição das naves inimigas, e é responsável por verificar as suas colisões e também o disparo de balas em direção ao player, e consante estes vãos endo destruidos novos são gerados.
 	
 
-- **Comentários**
+- **Em falta**
 	
 	- Está implementado camara e os inimigos seguem o player, os asteroides podem ser destruídos, mas em caso de chocarem com o inimigo ou o player estes perdem vida.  
 	
@@ -44,4 +44,4 @@ Este projeto teve por base a criação de um jogo com base no framework Monogame
 
 - Este projeto foi desafiante, uma vez que a framework obriga a pensar com cuidado na sua implementação, pois não existe uma base como em outras frameworks do tipo unity. 
 
- 
+- Como melhorias poderia ser implemantado as já identificadas anteriormente, bem como incluir som.
