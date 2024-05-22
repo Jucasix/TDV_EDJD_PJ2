@@ -31,7 +31,7 @@ Este projeto teve por base a criação de um jogo com base no framework Monogame
 	
 	- Bullet.cs: Nesta classe temos a crição e desenho das balas tendo em conta a posição de que a dispara.
 	
-	- Enemy.cs: Nesta classe temos a crição das naves inimigas, e é responsável por verificar as suas colisões e também o disparo de balas em direção ao player, e consante estes vãos endo destruidos novos são gerados.
+	- Enemy.cs: Nesta classe temos a crição das naves inimigas, e é responsável por verificar as suas colisões e também o disparo de balas em direção ao player, e consante estes vãos endo destruidos novos são gerados, é também aqui se se faz o controlo do AI incluindo um métedo de raycast para evitar aasteroides. 
 	
 
 - **Em falta**
