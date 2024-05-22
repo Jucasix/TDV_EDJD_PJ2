@@ -279,7 +279,7 @@ namespace TDJ2_Astroidz
             //Set the player's position to the center of the screen
             Vector3 screenCenter = new Vector3(GraphicsDevice.Viewport.Width / 2, GraphicsDevice.Viewport.Height / 2, 0);
 
-            // Draw the player sprite
+            //Draw the player sprite
             Vector2 playerOrigin = new Vector2(playerTexture.Width / 2, playerTexture.Height / 2);
             _spriteBatch.Draw(playerTexture, new Vector2(screenCenter.X, screenCenter.Y), null, Color.White, playerRotation + MathHelper.PiOver2*2, playerOrigin, 1.0f, SpriteEffects.None, 0f);
 
@@ -305,10 +305,10 @@ namespace TDJ2_Astroidz
 
             foreach (var enemy in enemies)
             {
-                // Transform enemy position to screen space
+                //Transform enemy position to screen space
                 Vector3 enemyScreenPosition = Vector3.Transform(new Vector3(enemy.Position, 0), cameraTranslation);
 
-                // Draw the enemy texture at the transformed position with the correct rotation
+                //Draw the enemy texture at the transformed position with the correct rotation
                 Vector2 enemyOrigin = new Vector2(enemyTexture.Width / 2, enemyTexture.Height / 2);
                 _spriteBatch.Draw(enemyTexture, new Vector2(enemyScreenPosition.X, enemyScreenPosition.Y), null, Color.White, enemy.Rotation, enemyOrigin, 1.0f, SpriteEffects.None, 0f);
 
@@ -337,8 +337,6 @@ namespace TDJ2_Astroidz
 
 
 
-
-
     }
 
     public static class Debug
@@ -362,7 +360,7 @@ namespace TDJ2_Astroidz
     }
 
 
-
+    //SAT collision adapted from a non-monogame Unity code
     public static class SATCollision
     {
         public static bool CheckCollision(VertexPositionColor[] shapeA, Matrix transformA, VertexPositionColor[] shapeB, Matrix transformB)
