@@ -2,9 +2,11 @@
 
 - Astroidz Gaming
 
+
 # Introdução:
 
 Este projeto teve por base a criação de um jogo com base no framework Monogame.
+
 
 # Trabalho realizado por:
 
@@ -13,6 +15,7 @@ Este projeto teve por base a criação de um jogo com base no framework Monogame
 - 29848 - André Azevedo
 
 - 29580 - João Carvalho
+
 
 # Sobre o Jogo:
 
@@ -40,8 +43,13 @@ Este projeto teve por base a criação de um jogo com base no framework Monogame
 	
 	- Não está implementado todos os sprites, menu, score e fim do jogo, sobre o fim do jogo ao chegar a zero a vida do player o jogo continua.
 
+
+# Melhorias:
+
+- Como melhorias poderia ser implemantado as já identificadas anteriormente, bem como incluir som e salvar o jogo de modo a continuar o o player terminou.
+
+
 # Conclusão:
 
 - Este projeto foi desafiante, uma vez que a framework obriga a pensar com cuidado na sua implementação, pois não existe uma base como em outras frameworks do tipo unity. 
 
-- Como melhorias poderia ser implemantado as já identificadas anteriormente, bem como incluir som.
