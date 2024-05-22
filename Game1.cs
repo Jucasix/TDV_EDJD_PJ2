@@ -20,15 +20,15 @@ namespace TDJ2_Astroidz
         private Vector3 inertia = new Vector3(0, 0, 0);
         private float playerRotation = 0f;
         private float playerSpeed = 0.5f;
+        public float PlayerHitPoints = 100f;
+        private float playerFireTimer;
+        private bool isPlayerAlive = true;
 
         private int asteroidTimer = 0;
         private List<VertexPositionColor[]> asteroidVertices = new List<VertexPositionColor[]>();
         private Random random = new Random();
         private List<Asteroid> asteroids = new List<Asteroid>();
         private const int AsteroidPoolSize = 50;
-
-        public float PlayerHitPoints = 100f;
-        private float playerFireTimer;
 
         public static List<Bullet> bullets = new List<Bullet>();
 
@@ -89,6 +89,16 @@ namespace TDJ2_Astroidz
         {
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
                 Exit();
+
+            if (isPlayerAlive)
+            {
+                if (PlayerHitPoints <= 0)
+                {
+                    isPlayerAlive = false;
+                    PlayerHitPoints = 0;
+                }
+            }
+            else { } //TBD implement become ded here
 
             //Get current mouse state
             MouseState mouseState = Mouse.GetState();
