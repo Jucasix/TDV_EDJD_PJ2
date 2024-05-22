@@ -38,7 +38,7 @@ Este projeto teve por base a criação de um jogo com base no framework Monogame
 	
 	- Está implementado camara e os inimigos seguem o player, os asteroides podem ser destruídos, mas em caso de chocarem com o inimigo ou o player estes perdem vida.  
 	
-	- Não está implementado score nem fim do jogo, ao chegar a zero a vida do player o jogo continua.
+	- Não está implementado menu, score e fim do jogo, sobre o fim do jogo ao chegar a zero a vida do player o jogo continua.
 
 # Conclusão:
 
