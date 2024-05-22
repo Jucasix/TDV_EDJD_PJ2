@@ -42,6 +42,6 @@ Este projeto teve por base a criação de um jogo com base no framework Monogame
 
 # Conclusão:
 
-- Este projeto foi desafiante, uma vez que a framework obriga a uma implementação total, pois não existe uma base como em outras frameworks do tipo unity. 
+- Este projeto foi desafiante, uma vez que a framework obriga a pensar com cuidado na sua implementação, pois não existe uma base como em outras frameworks do tipo unity. 
 
  
