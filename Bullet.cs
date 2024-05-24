@@ -2,6 +2,7 @@
 using Microsoft.Xna.Framework;
 using System.Collections.Generic;
 using TDJ2_Astroidz;
+using System;
 
 public class Bullet
 {
@@ -9,6 +10,7 @@ public class Bullet
     public Vector2 Velocity { get; set; }
     public bool IsActive { get; set; }
     private float speed = 20f;
+    public float Rotation;
 
     public int Faction { get; private set; }
 
@@ -34,6 +36,12 @@ public class Bullet
         if (distanceToPlayer > inactiveDist)
         {
             IsActive = false;
+        }
+
+        //Update rotation to face the movement direction
+        if (Velocity.LengthSquared() > 0)
+        {
+            Rotation = (float)Math.Atan2(Velocity.Y, Velocity.X) + MathHelper.PiOver2;
         }
 
     }
@@ -73,7 +81,7 @@ public class Bullet
                     asteroidTransform))
             {
                 IsActive = false;
-                asteroid.Hitpoints -= 20f;
+                asteroid.Hitpoints -= 40f;
                 if (asteroid.Hitpoints <= 0) asteroid.IsActive = false;
                 break;
             }
@@ -102,17 +110,17 @@ public class Bullet
         }
     }
 
-    public void Draw(GraphicsDevice graphicsDevice, BasicEffect basicEffect, Matrix viewMatrix)
-    {
-        var vertices = new VertexPositionColor[3];
-        vertices[0] = new VertexPositionColor(new Vector3(Position, -5), Color.Purple);
-        vertices[1] = new VertexPositionColor(new Vector3(Position + Velocity, 0), Color.Purple);
-        vertices[2] = new VertexPositionColor(new Vector3(Position + Velocity, 0), Color.Purple);
+    //public void Draw(GraphicsDevice graphicsDevice, BasicEffect basicEffect, Matrix viewMatrix)
+    //{
+    //    var vertices = new VertexPositionColor[3];
+    //    vertices[0] = new VertexPositionColor(new Vector3(Position, -5), Color.Purple);
+    //    vertices[1] = new VertexPositionColor(new Vector3(Position + Velocity, 0), Color.Purple);
+    //    vertices[2] = new VertexPositionColor(new Vector3(Position + Velocity, 0), Color.Purple);
 
-        basicEffect.World = Matrix.Identity;
-        basicEffect.View = viewMatrix;
-        basicEffect.CurrentTechnique.Passes[0].Apply();
+    //    basicEffect.World = Matrix.Identity;
+    //    basicEffect.View = viewMatrix;
+    //    basicEffect.CurrentTechnique.Passes[0].Apply();
 
-        graphicsDevice.DrawUserPrimitives(PrimitiveType.LineList, vertices, 0, 1);
-    }
+    //    graphicsDevice.DrawUserPrimitives(PrimitiveType.LineList, vertices, 0, 1);
+    //}
 }

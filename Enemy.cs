@@ -3,6 +3,7 @@ using Microsoft.Xna.Framework.Graphics;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection.Metadata;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -20,21 +21,53 @@ namespace TDJ2_Astroidz
         public float HitPoints;
         public float Mass;
         public VertexPositionColor[] Vertices;
+        public Texture2D Texture;
 
         public int Faction = 2;
-        public int EnemyType;
+        public int Type;
+        public float spawnWeight;
 
-        public Enemy(Vector2 position, float speed, float fireRate, float hitPoints, VertexPositionColor[] vertices, int enemyType)
+        public Enemy(Vector2 position, VertexPositionColor[] vertices, int enemyType)
         {
+            //Default setup
+            Type = enemyType;
             Position = position;
-            Speed = speed;
-            FireRate = fireRate;
-            HitPoints = hitPoints;
             IsActive = true;
-            fireTimer = 0f;
+            fireTimer = 0f; //This is not fireRate, this is just a timer for firing
             Vertices = vertices;
-            EnemyType = enemyType;
+            HitPoints = 50;
+            Speed = 300;
+            FireRate = 0.33f;
             Mass = 0.01f;
+
+            //Here we initialize different enemy types and stats etc
+            switch (Type)
+            {
+                case 1:
+                    HitPoints = 50;
+                    Speed = 300;
+                    FireRate = 0.33f;
+                    spawnWeight = 100f;
+                    break;
+                case 2:
+                    HitPoints = 100;
+                    Speed = 150;
+                    FireRate = 0.2f;
+                    spawnWeight = 30f;
+                    break;
+                case 3:
+                    HitPoints = 50;
+                    Speed = 550;
+                    FireRate = 0.7f;
+                    spawnWeight = 10f;
+                    break;
+            }
+        }
+
+        public float AdjustedSpawnWeight(float difficulty)
+        {
+            //Adjust spawn weight based on difficulty, making rarer enemies more common as difficulty increases
+            return spawnWeight / (difficulty / 100.0f + 1.0f);
         }
 
         public void Update(Vector2 playerPosition, GameTime gameTime, VertexPositionColor[] playerVertices, Matrix playerTransform, ref Vector3 inertia, float playerSpeed, ref float playerHitPoints, List<Asteroid> asteroids)
@@ -123,6 +156,7 @@ namespace TDJ2_Astroidz
                 if (HitPoints <= 0) IsActive = false;
             }
         }
+
         public bool CheckCollision(VertexPositionColor[] otherVertices, Matrix otherTransform)
         {
             Matrix enemyTransform = Matrix.CreateRotationZ(Rotation) * Matrix.CreateTranslation(new Vector3(Position, 0));
@@ -138,8 +172,11 @@ namespace TDJ2_Astroidz
             {
                 if (!asteroid.IsActive) continue;
 
+                //Check if the ray intersects the current asteroid being iterated over
                 if (RayIntersectsAsteroid(origin, direction, length, asteroid, out float distance))
                 {
+                    //If the current intersection distance is closer than the previous closest distance, update it
+                    //Supposed to help prevent it from crashing into asteroids but uh. Not gonna work till it learns to pick directions. Or go backwards
                     if (distance < closestDistance)
                     {
                         closestDistance = distance;
@@ -148,6 +185,7 @@ namespace TDJ2_Astroidz
                 }
             }
 
+            //Return true if an intersection was found, false otherwise
             return hitAsteroid != null;
         }
 
@@ -159,11 +197,13 @@ namespace TDJ2_Astroidz
             var asteroidTransform = Matrix.CreateRotationZ(asteroid.rotation) * Matrix.CreateTranslation(new Vector3(asteroid.position, 0));
             var asteroidBounds = CreateBoundingBox(asteroid.vertices, asteroidTransform);
 
-            //Create the ray
+            //Create a ray from the origin point and direction
             Ray ray = new Ray(new Vector3(origin, 0), new Vector3(direction, 0));
 
-            //Check for intersection
+            //Check if the ray intersects with the asteroid's bounding box
+            //The ? just means it can be null
             float? intersect = ray.Intersects(asteroidBounds);
+            //If there is an intersection and it is within the specified length, set the distance and return true
             if (intersect.HasValue && intersect.Value <= length)
             {
                 distance = intersect.Value;
@@ -173,9 +213,12 @@ namespace TDJ2_Astroidz
             return false;
         }
 
+        //Helper to create a bounding box
         private BoundingBox CreateBoundingBox(VertexPositionColor[] vertices, Matrix transform)
         {
+            //Transform the vertices of the object using the provided transformation matrix
             var transformedVertices = vertices.Select(v => Vector3.Transform(v.Position, transform)).ToArray();
+            //Create and return a bounding box that contains all the transformed vertices
             return BoundingBox.CreateFromPoints(transformedVertices);
         }
 

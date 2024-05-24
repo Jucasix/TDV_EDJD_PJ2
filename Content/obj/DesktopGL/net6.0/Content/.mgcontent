@@ -6,11 +6,29 @@
   <SourceFiles>
     <File>C:/Users/HP/source/repos/TDJ2 Astroidz/Content/Enemy01.png</File>
     <File>C:/Users/HP/source/repos/TDJ2 Astroidz/Content/Enemy02.png</File>
+    <File>C:/Users/HP/source/repos/TDJ2 Astroidz/Content/File.spritefont</File>
+    <File>C:/Users/HP/source/repos/TDJ2 Astroidz/Content/plasmaShoot.wav</File>
+    <File>C:/Users/HP/source/repos/TDJ2 Astroidz/Content/PlayButton.png</File>
     <File>C:/Users/HP/source/repos/TDJ2 Astroidz/Content/Player01.png</File>
+    <File>C:/Users/HP/source/repos/TDJ2 Astroidz/Content/Projectile01.png</File>
     <File>C:/Users/HP/source/repos/TDJ2 Astroidz/Content/Projectiles.png</File>
+    <File>C:/Users/HP/source/repos/TDJ2 Astroidz/Content/QuitButton.png</File>
+    <File>C:/Users/HP/source/repos/TDJ2 Astroidz/Content/Star.png</File>
+    <File>C:/Users/HP/source/repos/TDJ2 Astroidz/Content/Thruster01.png</File>
+    <File>C:/Users/HP/source/repos/TDJ2 Astroidz/Content/Thruster02.png</File>
     <File>C:/Users/HP/source/repos/TDJ2 Astroidz/Content/Thursters.png</File>
+    <File>C:/Users/HP/source/repos/TDJ2 Astroidz/Content/wrong-place-129242.mp3</File>
   </SourceFiles>
   <DestFiles>
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File>UIFont.spritefont</File>
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />

@@ -28,3 +28,14 @@ C:\Users\HP\source\repos\TDJ2 Astroidz\bin\Debug\net6.0\Content\Enemy01.xnb
 C:\Users\HP\source\repos\TDJ2 Astroidz\bin\Debug\net6.0\Content\Player01.xnb
 C:\Users\HP\source\repos\TDJ2 Astroidz\bin\Debug\net6.0\Content\Projectiles.xnb
 C:\Users\HP\source\repos\TDJ2 Astroidz\bin\Debug\net6.0\Content\Thursters.xnb
+C:\Users\HP\source\repos\TDJ2 Astroidz\bin\Debug\net6.0\Content\PlayButton.xnb
+C:\Users\HP\source\repos\TDJ2 Astroidz\bin\Debug\net6.0\Content\QuitButton.xnb
+C:\Users\HP\source\repos\TDJ2 Astroidz\bin\Debug\net6.0\Content\File.xnb
+C:\Users\HP\source\repos\TDJ2 Astroidz\bin\Debug\net6.0\Content\UIFont.xnb
+C:\Users\HP\source\repos\TDJ2 Astroidz\bin\Debug\net6.0\Content\Thruster01.xnb
+C:\Users\HP\source\repos\TDJ2 Astroidz\bin\Debug\net6.0\Content\Thruster02.xnb
+C:\Users\HP\source\repos\TDJ2 Astroidz\bin\Debug\net6.0\Content\Projectile01.xnb
+C:\Users\HP\source\repos\TDJ2 Astroidz\bin\Debug\net6.0\Content\Star.xnb
+C:\Users\HP\source\repos\TDJ2 Astroidz\bin\Debug\net6.0\Content\plasmaShoot.xnb
+C:\Users\HP\source\repos\TDJ2 Astroidz\bin\Debug\net6.0\Content\wrong-place-129242.ogg
+C:\Users\HP\source\repos\TDJ2 Astroidz\bin\Debug\net6.0\Content\wrong-place-129242.xnb

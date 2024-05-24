@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-  <SourceFile>C:/Users/HP/source/repos/TDJ2 Astroidz/Content/Enemy02.png</SourceFile>
-  <SourceTime>2024-05-22T11:14:00.7896173+01:00</SourceTime>
-  <DestFile>C:/Users/HP/source/repos/TDJ2 Astroidz/Content/bin/DesktopGL/Content/Enemy02.xnb</DestFile>
-  <DestTime>2024-05-23T19:34:07.8086108+01:00</DestTime>
+  <SourceFile>C:/Users/HP/source/repos/TDJ2 Astroidz/Content/Projectile01.png</SourceFile>
+  <SourceTime>2024-05-23T21:12:47.7971586+01:00</SourceTime>
+  <DestFile>C:/Users/HP/source/repos/TDJ2 Astroidz/Content/bin/DesktopGL/Content/Projectile01.xnb</DestFile>
+  <DestTime>2024-05-23T21:13:52.4330503+01:00</DestTime>
   <Importer>TextureImporter</Importer>
   <ImporterTime>2022-07-26T12:44:56+01:00</ImporterTime>
   <Processor>TextureProcessor</Processor>

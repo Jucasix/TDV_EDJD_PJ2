@@ -68,13 +68,13 @@ public class Asteroid
             inertia -= impulseVector / playerSpeed;
             inertia *= 0.9f; //Dampen the inertia slightly to simulate energy loss
 
-            //Ensure a minimum inertia to prevent stopping completely
+            //Ensure a minimum inertia to prevent stopping completely. Probably not needed but meh
             if (inertia.Length() < 0.1f)
             {
                 inertia = new Vector3(collisionNormal * -0.5f, 0);
             }
 
-            HandleCollision(collisionNormal, playerSpeed, playerMass);
+            PlayerMovesAsteroid(collisionNormal, playerSpeed, playerMass);
 
             //Calculate the impact force (use the magnitude of the impulse vector)
             float impactForce = impulseVector.Length();
@@ -89,7 +89,7 @@ public class Asteroid
 
         return false;
     }
-    public void HandleCollision(Vector2 collisionNormal, float otherVelocity, float otherMass)
+    public void PlayerMovesAsteroid(Vector2 collisionNormal, float otherVelocity, float otherMass)
     {
         //Calculate relative velocity
         Vector2 relativeVelocity = velocity - otherVelocity * collisionNormal;
@@ -167,7 +167,7 @@ public class Asteroid
 
 
 
-    public void CheckCollisionAsteroid(Asteroid otherAsteroid)
+    public void CheckCollisionOtherAsteroids(Asteroid otherAsteroid)
     {
         Matrix transformA = Matrix.CreateRotationZ(this.rotation) * Matrix.CreateTranslation(new Vector3(this.position, 0));
         Matrix transformB = Matrix.CreateRotationZ(otherAsteroid.rotation) * Matrix.CreateTranslation(new Vector3(otherAsteroid.position, 0));

@@ -1,6 +1,8 @@
 ﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Audio;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using Microsoft.Xna.Framework.Media;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -8,13 +10,19 @@ using System.Linq;
 
 namespace TDJ2_Astroidz
 {
+    public enum GameState
+    {
+        MainMenu,
+        Playing,
+        Quit
+    }
     public class Game1 : Game
     {
         private GraphicsDeviceManager _graphics;
         private SpriteBatch _spriteBatch;
         private BasicEffect _basicEffect;
         private VertexPositionColor[] playerVertices;
-        private Vector3 playerPosition = new Vector3(400, 300, 0); //Initial position
+        private Vector3 playerPosition = new Vector3(400, 300, 0);
         private Vector3 forwardDirection = new Vector3(0, 0, 0);
         private Vector3 perpendicularDirection = new Vector3(0, 0, 0);
         private Vector3 inertia = new Vector3(0, 0, 0);
@@ -37,8 +45,24 @@ namespace TDJ2_Astroidz
         private const int EnemySpawnInterval = 200;
 
         private Texture2D playerTexture;
+        private Texture2D thrusterTexture;
+        private Texture2D thrusterMidTexture;
         private Texture2D enemyTexture;
+        private Texture2D projectileTexture;
 
+        private Texture2D starTexture;
+        private List<Vector2> stars;
+
+        public GameState currentGameState = GameState.MainMenu;
+        private Texture2D playButtonTexture;
+        private Texture2D quitButtonTexture;
+        private Rectangle playButtonRect;
+        private Rectangle quitButtonRect;
+
+        private float difficulty = 0f;
+        private SpriteFont font;
+
+        private SoundEffect bulletSoundEffect;
 
         public Game1()
         {
@@ -63,15 +87,33 @@ namespace TDJ2_Astroidz
                 Projection = Matrix.CreateOrthographicOffCenter(0, GraphicsDevice.Viewport.Width, GraphicsDevice.Viewport.Height, 0, 0, 1)
             };
 
-            //Load textures
+            //Load the font
+            font = Content.Load<SpriteFont>("UIFont"); 
+
+            //Load menu button textures
+            playButtonTexture = Content.Load<Texture2D>("PlayButton");
+            quitButtonTexture = Content.Load<Texture2D>("QuitButton");
+            //Define menu button rectangles
+            playButtonRect = new Rectangle(GraphicsDevice.Viewport.Width / 2 - playButtonTexture.Width / 2, GraphicsDevice.Viewport.Height / 2 - playButtonTexture.Height / 2, playButtonTexture.Width, playButtonTexture.Height);
+            quitButtonRect = new Rectangle(GraphicsDevice.Viewport.Width / 2 - quitButtonTexture.Width / 2, GraphicsDevice.Viewport.Height / 2 + quitButtonTexture.Height, quitButtonTexture.Width, quitButtonTexture.Height);
+
+            //Load game textures
             playerTexture = Content.Load<Texture2D>("Player01");
-            enemyTexture = Content.Load<Texture2D>("Enemy02");
+            thrusterTexture = Content.Load<Texture2D>("Thruster01");
+            thrusterMidTexture = Content.Load<Texture2D>("Thruster02");
+            enemyTexture = Content.Load<Texture2D>("Enemy01");
+            projectileTexture = Content.Load<Texture2D>("projectile01");
 
             //Define player vertices for collisions
             playerVertices = new VertexPositionColor[3];
             playerVertices[0] = new VertexPositionColor(new Vector3(0, 20, 0), Color.White);
             playerVertices[1] = new VertexPositionColor(new Vector3(-10, -10, 0), Color.White);
             playerVertices[2] = new VertexPositionColor(new Vector3(10, -10, 0), Color.White);
+
+            // Load star texture
+            starTexture = Content.Load<Texture2D>("Star");
+            // Generate random star positions
+            GenerateStars();
 
             //Generate random asteroids
             Random random = new Random();
@@ -82,6 +124,14 @@ namespace TDJ2_Astroidz
                 asteroids.Add(CreateRandomAsteroid(position, velocity));
             }
 
+            //Load Sound Effects
+            bulletSoundEffect = Content.Load<SoundEffect>("plasmaShoot");
+
+            //Load and play background music
+            Song backgroundMusic = Content.Load<Song>("wrong-place-129242");
+            MediaPlayer.Play(backgroundMusic);
+            MediaPlayer.IsRepeating = true; //Loop the music
+
             base.LoadContent();
         }
 
@@ -90,15 +140,58 @@ namespace TDJ2_Astroidz
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
                 Exit();
 
+            switch (currentGameState)
+            {
+                case GameState.MainMenu:
+                    UpdateMainMenu(gameTime);
+                    break;
+                case GameState.Playing:
+                    UpdateGameplay(gameTime);
+                    break;
+                case GameState.Quit:
+                    Exit();
+                    break;
+            }
+
+            base.Update(gameTime);
+        }
+
+        private void UpdateMainMenu(GameTime gameTime)
+        {
+            MouseState mouseState = Mouse.GetState();
+
+            if (mouseState.LeftButton == ButtonState.Pressed)
+            {
+                if (playButtonRect.Contains(mouseState.Position))
+                {
+                    currentGameState = GameState.Playing;
+                    difficulty = 0f;
+                    PlayerHitPoints = 100f;
+                    isPlayerAlive = true;
+                }
+                else if (quitButtonRect.Contains(mouseState.Position))
+                {
+                    currentGameState = GameState.Quit;
+                }
+            }
+        }
+
+
+        private void UpdateGameplay(GameTime gameTime)
+        {
+
             if (isPlayerAlive)
             {
                 if (PlayerHitPoints <= 0)
                 {
                     isPlayerAlive = false;
                     PlayerHitPoints = 0;
+                    currentGameState = GameState.MainMenu;
                 }
             }
-            else { } //TBD implement become ded here
+
+            //Update difficulty based on elapsed game time
+            difficulty += (float)gameTime.ElapsedGameTime.TotalSeconds * 0.1f;
 
             //Get current mouse state
             MouseState mouseState = Mouse.GetState();
@@ -116,8 +209,8 @@ namespace TDJ2_Astroidz
 
             //Speed vars prob want to move em later
             float forwardSpeedMultiplier = 1.0f;
-            float strafeSpeedMultiplier = 0.33f;
-            float backwardSpeedMultiplier = 0.15f;
+            float strafeSpeedMultiplier = 0.5f;
+            float backwardSpeedMultiplier = 0.2f;
             float maxSpeed = 20.0f;
 
             //Calculate movement based on current rotation
@@ -134,6 +227,9 @@ namespace TDJ2_Astroidz
                 inertia += perpendicularDirection * strafeSpeedMultiplier;
             if (keyboardState.IsKeyDown(Keys.D))
                 inertia -= perpendicularDirection * strafeSpeedMultiplier;
+            //Handbrake
+            if (keyboardState.IsKeyDown(Keys.Space))
+                inertia *= 0.92f;
 
             //Cap the inertia to maximum speed
             if (inertia.LengthSquared() > maxSpeed * maxSpeed)
@@ -156,6 +252,8 @@ namespace TDJ2_Astroidz
                     Vector2 bulletDirection = new Vector2(mouseState.X, mouseState.Y) - bulletPosition;
                     bullets.Add(new Bullet(bulletPosition, new Vector2(forwardDirection.X, forwardDirection.Y), 1));
                     playerFireTimer = 0f;
+
+                    bulletSoundEffect.Play();
                 }
             }
 
@@ -200,7 +298,7 @@ namespace TDJ2_Astroidz
             {
                 for (int j = i + 1; j < asteroids.Count; j++)
                 {
-                    asteroids[i].CheckCollisionAsteroid(asteroids[j]);
+                    asteroids[i].CheckCollisionOtherAsteroids(asteroids[j]);
                 }
             }
 
@@ -227,9 +325,6 @@ namespace TDJ2_Astroidz
             }
             //Remove inactive enemies
             enemies.RemoveAll(e => !e.IsActive);
-
-
-            base.Update(gameTime);
         }
 
 
@@ -250,7 +345,7 @@ namespace TDJ2_Astroidz
                 float angle = (float)i / numVertices * MathHelper.TwoPi;
                 float x = semiMajorAxis * (float)Math.Cos(angle);
                 float y = semiMinorAxis * (float)Math.Sin(angle);
-                asteroidVertices.Add(new VertexPositionColor(new Vector3(x, y, 0), Color.White));
+                asteroidVertices.Add(new VertexPositionColor(new Vector3(x, y, 0), Color.DarkOrange));
             }
 
             //Create triangles
@@ -270,21 +365,79 @@ namespace TDJ2_Astroidz
 
         private void SpawnEnemy()
         {
-            Vector2 position = new Vector2(random.Next(0, GraphicsDevice.Viewport.Width), random.Next(0, GraphicsDevice.Viewport.Height));
-            float speed = 300f;
-            float fireRate = 0.2f;
-            float hitPoints = 50f;
-            enemies.Add(new Enemy(position, speed, fireRate, hitPoints, playerVertices, 1));
+            //Choose where to place the enemy
+            Vector2 position = new Vector2(random.Next(0, GraphicsDevice.Viewport.Width + (int)playerPosition.X), random.Next(0, GraphicsDevice.Viewport.Height + (int)playerPosition.Y));
+
+            //List of possible enemy types, needs to be manually updated everytime a new enemy is added to Enemy.cs
+            int[] enemyTypes = new int[] { 1, 2, 3 };
+
+            //Create a list to store adjusted spawn weights
+            List<float> adjustedSpawnWeights = new List<float>();
+
+            //For each enemy type, a temporary Enemy object is "created" with the given position and type, for ease of use, doesn't actually enter gameplay at all.
+            foreach (int type in enemyTypes)
+            {
+                Enemy tempEnemy = new Enemy(position, playerVertices, type);
+                adjustedSpawnWeights.Add(tempEnemy.AdjustedSpawnWeight(difficulty));
+            }
+
+            //Calculate the total weight
+            float totalWeight = adjustedSpawnWeights.Sum();
+
+            //Pick a random value within the total weight range
+            float randomValue = (float)(random.NextDouble() * totalWeight);
+
+            //Determine which enemy type to spawn based on the random value
+            float cumulativeWeight = 0.0f;
+            int chosenType = 1;
+            for (int i = 0; i < enemyTypes.Length; i++)
+            {
+                cumulativeWeight += adjustedSpawnWeights[i];
+                if (randomValue < cumulativeWeight)
+                {
+                    chosenType = enemyTypes[i];
+                    break;
+                }
+            }
+
+            enemies.Add(new Enemy(position, playerVertices, chosenType));
         }
 
-
-
-
+        //Handles calling the draw for either main menu or playing
         protected override void Draw(GameTime gameTime)
         {
             GraphicsDevice.Clear(Color.Black);
 
             _spriteBatch.Begin();
+
+            switch (currentGameState)
+            {
+                case GameState.MainMenu:
+                    DrawMainMenu();
+                    break;
+                case GameState.Playing:
+                    DrawGameplay(gameTime);
+                    break;
+            }
+
+            _spriteBatch.End();
+
+            base.Draw(gameTime);
+        }
+
+        private void DrawMainMenu()
+        {
+            DrawStars(_spriteBatch);
+
+            _spriteBatch.Draw(playButtonTexture, playButtonRect, Color.White);
+            _spriteBatch.Draw(quitButtonTexture, quitButtonRect, Color.White);
+        }
+
+        private void DrawGameplay(GameTime gameTime)
+        {
+            GraphicsDevice.Clear(Color.Black);
+
+            DrawStars(_spriteBatch);
 
             //Set the player's position to the center of the screen
             Vector3 screenCenter = new Vector3(GraphicsDevice.Viewport.Width / 2, GraphicsDevice.Viewport.Height / 2, 0);
@@ -293,6 +446,14 @@ namespace TDJ2_Astroidz
             Vector2 playerOrigin = new Vector2(playerTexture.Width / 2, playerTexture.Height / 2);
             _spriteBatch.Draw(playerTexture, new Vector2(screenCenter.X, screenCenter.Y), null, Color.White, playerRotation + MathHelper.PiOver2*2, playerOrigin, 1.0f, SpriteEffects.None, 0f);
 
+
+            // If the player is moving forward, draw the thrusters
+            if (Vector3.Dot(inertia, forwardDirection) > 150)
+            {
+                _spriteBatch.Draw(thrusterTexture, new Vector2(screenCenter.X, screenCenter.Y), null, Color.White, playerRotation + MathHelper.PiOver2 * 2, new Vector2(playerOrigin.X - 3, playerOrigin.Y - 40), 1.0f, SpriteEffects.None, 0f);
+                _spriteBatch.Draw(thrusterMidTexture, new Vector2(screenCenter.X, screenCenter.Y), null, Color.White, playerRotation + MathHelper.PiOver2*2, new Vector2(playerOrigin.X-19, playerOrigin.Y - 40), 1.0f, SpriteEffects.None, 0f);
+                _spriteBatch.Draw(thrusterTexture, new Vector2(screenCenter.X, screenCenter.Y), null, Color.White, playerRotation + MathHelper.PiOver2 * 2, new Vector2(playerOrigin.X -35, playerOrigin.Y - 40), 1.0f, SpriteEffects.None, 0f);
+            }
 
             //Adjust the view matrix for the asteroids and other objects
             Matrix cameraTranslation = Matrix.CreateTranslation(screenCenter - playerPosition);
@@ -307,10 +468,7 @@ namespace TDJ2_Astroidz
 
                 asteroid.Draw(GraphicsDevice, _basicEffect);
 
-                Debug.DrawLine(GraphicsDevice,
-                               Vector3.Transform(new Vector3(asteroid.position.X, asteroid.position.Y, 0), cameraTranslation),
-                               Vector3.Transform(new Vector3(asteroid.position.X, asteroid.position.Y, 0) + new Vector3(asteroid.velocity.X, asteroid.velocity.Y, 0) * 100, cameraTranslation),
-                               Color.Blue);
+                //Debug.DrawLine(GraphicsDevice, Vector3.Transform(new Vector3(asteroid.position.X, asteroid.position.Y, 0), cameraTranslation), Vector3.Transform(new Vector3(asteroid.position.X, asteroid.position.Y, 0) + new Vector3(asteroid.velocity.X, asteroid.velocity.Y, 0) * 100, cameraTranslation), Color.Blue);
             }
 
             foreach (var enemy in enemies)
@@ -322,29 +480,52 @@ namespace TDJ2_Astroidz
                 Vector2 enemyOrigin = new Vector2(enemyTexture.Width / 2, enemyTexture.Height / 2);
                 _spriteBatch.Draw(enemyTexture, new Vector2(enemyScreenPosition.X, enemyScreenPosition.Y), null, Color.White, enemy.Rotation, enemyOrigin, 1.0f, SpriteEffects.None, 0f);
 
-                Debug.DrawLine(GraphicsDevice,
-                               enemyScreenPosition,
-                               enemyScreenPosition + new Vector3(enemy.Velocity.X, enemy.Velocity.Y, 0),
-                               Color.Purple);
+                //Debug.DrawLine(GraphicsDevice, enemyScreenPosition, enemyScreenPosition + new Vector3(enemy.Velocity.X, enemy.Velocity.Y, 0), Color.Purple);
             }
 
             //Draw bullets
             foreach (var bullet in bullets)
             {
-                bullet.Draw(GraphicsDevice, _basicEffect, cameraTranslation);
-                Debug.DrawLine(GraphicsDevice,
-                               Vector3.Transform(new Vector3(bullet.Position.X, bullet.Position.Y, 0), cameraTranslation),
-                               Vector3.Transform(new Vector3(bullet.Position.X, bullet.Position.Y, 0) + new Vector3(bullet.Velocity.X, bullet.Velocity.Y, 0) * 1, cameraTranslation),
-                               Color.Red);
+                //bullet.Draw(GraphicsDevice, _basicEffect, cameraTranslation); Not used atm
+
+                //Transform bullet position to screen space
+                Vector3 bulletScreenPosition = Vector3.Transform(new Vector3(bullet.Position, 0), cameraTranslation);
+
+                //Draw the bullet texture at the transformed position with the correct rotation
+                Vector2 bulletOrigin = new Vector2(projectileTexture.Width / 2, projectileTexture.Height / 2);
+                _spriteBatch.Draw(projectileTexture, new Vector2(bulletScreenPosition.X, bulletScreenPosition.Y), null, Color.White, bullet.Rotation, bulletOrigin, 1.0f, SpriteEffects.None, 0f);
+
+                //Debug.DrawLine(GraphicsDevice, Vector3.Transform(new Vector3(bullet.Position.X, bullet.Position.Y, 0), cameraTranslation), Vector3.Transform(new Vector3(bullet.Position.X, bullet.Position.Y, 0) + new Vector3(bullet.Velocity.X, bullet.Velocity.Y, 0) * -1, cameraTranslation), Color.Red);
             }
 
-            _spriteBatch.End();
-
-            base.Draw(gameTime);
+            //Draw the UI
+            _spriteBatch.DrawString(font, $"Health: {(int)PlayerHitPoints}", new Vector2(10, 10), Color.Green);
+            _spriteBatch.DrawString(font, $"Difficulty: {(int)difficulty}", new Vector2(10, GraphicsDevice.Viewport.Height-20), Color.Yellow);
         }
 
+        private void GenerateStars()
+        {
+            stars = new List<Vector2>();
 
+            // Generate random star positions
+            Random random = new Random();
+            int numStars = 500; // Adjust as needed
+            for (int i = 0; i < numStars; i++)
+            {
+                int x = random.Next(0, GraphicsDevice.Viewport.Width);
+                int y = random.Next(0, GraphicsDevice.Viewport.Height);
+                stars.Add(new Vector2(x, y));
+            }
+        }
 
+        private void DrawStars(SpriteBatch spriteBatch)
+        {
+            // Draw stars
+            foreach (Vector2 star in stars)
+            {
+                spriteBatch.Draw(starTexture, star, Color.White);
+            }
+        }
 
 
     }
@@ -370,9 +551,13 @@ namespace TDJ2_Astroidz
     }
 
 
-    //SAT collision adapted from a non-monogame Unity code
+    //SAT collision
     public static class SATCollision
     {
+        //Takes in two arrays of vertices(shapeA and shapeB) and their corresponding transformation matrices(transformA and transformB)
+        //Calls GetAxes method to obtain the axes of both shapes
+        //Iterates through each axis and checks for overlap using the IsOverlapping method
+        //If any axis shows no overlap, it returns false, indicating no collision.Otherwise, it returns true
         public static bool CheckCollision(VertexPositionColor[] shapeA, Matrix transformA, VertexPositionColor[] shapeB, Matrix transformB)
         {
             List<Vector2> axes = GetAxes(shapeA, transformA);
@@ -389,6 +574,9 @@ namespace TDJ2_Astroidz
             return true;
         }
 
+        //Calculates the axes of a shape by iterating through its vertices
+        //For each edge defined by two consecutive vertices, it calculates the normal vector(perpendicular to the edge) and adds it to the list of axes
+        //It then returns the list of axes
         private static List<Vector2> GetAxes(VertexPositionColor[] shape, Matrix transform)
         {
             List<Vector2> axes = new List<Vector2>();
@@ -408,6 +596,10 @@ namespace TDJ2_Astroidz
             return axes;
         }
 
+        //Checks if two shapes are overlapping along a given axis
+        //Projects both shapes onto the axis using the ProjectShape method
+        //Compares the projections to determine if there is overlap
+        //Returns true if there is overlap, false otherwise
         private static bool IsOverlapping(Vector2 axis, VertexPositionColor[] shapeA, Matrix transformA, VertexPositionColor[] shapeB, Matrix transformB)
         {
             var (minA, maxA) = ProjectShape(axis, shapeA, transformA);
@@ -416,6 +608,10 @@ namespace TDJ2_Astroidz
             return minA <= maxB && maxA >= minB;
         }
 
+        //Projects a shape onto a given axis
+        //Iterates through each vertex of the shape, transforms it using the provided transformation matrix, and calculates its projection onto the axis using dot product
+        //Keeps track of the minimum and maximum projections
+        //Returns a tuple containing the minimum and maximum projections
         private static (float min, float max) ProjectShape(Vector2 axis, VertexPositionColor[] shape, Matrix transform)
         {
             float min = float.MaxValue;
