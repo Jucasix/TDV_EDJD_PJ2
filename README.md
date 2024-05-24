@@ -5,7 +5,7 @@
 
 # Introdução:
 
-Este projeto teve por base a criação de um jogo com base no framework Monogame.
+- Este projeto teve por base a criação de um jogo com base no framework Monogame.
 
 
 # Trabalho realizado por:
