@@ -19,7 +19,7 @@
 
 # Sobre o Jogo:
 
-- Este jogo ocorre em mundo aberto, onde a câmara segue o player, e o objetivo é tentar sobreviver o maior tempo possível e destruir os inimigos para obter score.
+- Este jogo ocorre em mundo aberto, onde a câmara segue o player, e o objetivo é tentar sobreviver o maior tempo possível e destruir os inimigos e não colidir com os asteroides.
 
 - Para jogar usa-se as teclas (wasd) e o rato para orientar a direção do player e o botão esquerdo para disparar. 
 
