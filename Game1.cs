@@ -365,8 +365,22 @@ namespace TDJ2_Astroidz
 
         private void SpawnEnemy()
         {
-            //Choose where to place the enemy
-            Vector2 position = new Vector2(random.Next(0, GraphicsDevice.Viewport.Width + (int)playerPosition.X), random.Next(0, GraphicsDevice.Viewport.Height + (int)playerPosition.Y));
+            //This is a hacky fix to prevent crashes
+            //Calculate the boundaries of the spawn area ensuring they are within the viewport dimensions
+            int xMin = Math.Max(0, (int)playerPosition.X - GraphicsDevice.Viewport.Width / 2);
+            int xMax = Math.Min(GraphicsDevice.Viewport.Width, (int)playerPosition.X + GraphicsDevice.Viewport.Width / 2);
+            xMax = Math.Max(xMin + 1, xMax);  // Ensure xMax is greater than xMin
+
+            int yMin = Math.Max(0, (int)playerPosition.Y - GraphicsDevice.Viewport.Height / 2);
+            int yMax = Math.Min(GraphicsDevice.Viewport.Height, (int)playerPosition.Y + GraphicsDevice.Viewport.Height / 2);
+            yMax = Math.Max(yMin + 1, yMax);  // Ensure yMax is greater than yMin
+
+            //Generate a random position within the defined boundaries
+            Vector2 position = new Vector2(random.Next(xMin, xMax), random.Next(yMin, yMax));
+
+            //Choose where to place the enemy (This code causes crashes, because of min/max values of the randoms).
+            //Vector2 position = new Vector2(random.Next(0, GraphicsDevice.Viewport.Width), random.Next(0, GraphicsDevice.Viewport.Height);
+            //Vector2 position = new Vector2(random.Next(0, GraphicsDevice.Viewport.Width + (int)playerPosition.X), random.Next(0, GraphicsDevice.Viewport.Height + (int)playerPosition.Y));
 
             //List of possible enemy types, needs to be manually updated everytime a new enemy is added to Enemy.cs
             int[] enemyTypes = new int[] { 1, 2, 3 };
