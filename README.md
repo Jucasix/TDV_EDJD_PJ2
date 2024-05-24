@@ -21,35 +21,37 @@ Este projeto teve por base a criação de um jogo com base no framework Monogame
 
 - Este jogo ocorre em mundo aberto, onde a câmara segue o player, e o objetivo é tentar sobreviver o maior tempo possível e destruir os inimigos para obter score.
 
-- Para jogar usa-se as teclas (awsd) e o rato para orientar a direção do player e o botãonesquerdo para disparar.   
+- Para jogar usa-se as teclas (awsd) e o rato para orientar a direção do player e o botãonesquerdo para disparar. 
 
 
 # Sobre o código:
 
+- **Mundo**
+	
+	- O mundo é em plano aberto e não tem nenhum sprite associado, as estralas decorativas são geradas aleatóriamente no inicio do jogo.  
+
 - **Classes:**
 
-	- Game1.cs: Classe base da framework monogame e principal responsável pela jogabiliade e pelo player. É responsável por fazer o load content para gerar os asteroides e inimigos aleatóriamente e controlo e implementação do player, aqui usamos os métodos implementados nas outras classes. Também é aqui que se faz todo o draw. É responsável por método de debug e colisão que são usadas em outras partes do código. 
+	- Game1.cs: Classe base da framework monogame e principal responsável pelo jogo em geral e pelo player. Para além de coisas essenciais como o controlo de gamestates (Menu, Playing, Quitting) e LoadContent, também é responsável por a criação e controlo do Player, e por gerar estrelas, asteroídes e inimigos aleatóriamente, e por atualizar os objetos definidos em outras classes e controlar a sua população (Evitando grandes quantidades de asteroídes/bullets). Também é aqui que se faz todo o draw, incluindo o UI. Adicionalmente responsável por um método de debug, e um métdo colisão SAT (Separating Axis Theorem) que são usadas em outras partes do código para todo o tipo de colisões.
 	
-	- Astroid.cs: Nesta classe temos os astereoides, aqui é verificada a lógica de movimento e de colisão entre todos os objetos e asteroídes.
+	- Asteroid.cs: Nesta classe temos definido o objeto do asteroides, aqui é verificada a lógica de movimento e de colisão entre todos os objetos (excepto bullets) e asteroídes, e também a desativação de asteroides se eles estiverem demasiado afastados do player.
 	
-	- Bullet.cs: Nesta classe temos a crição e desenho das balas tendo em conta a posição de que a dispara.
+	- Bullet.cs: Nesta classe é definido o objeto Bulet, o controlo da sua posição/velocidade, e as suas colisões com outros objetos
 	
-	- Enemy.cs: Nesta classe temos a crição das naves inimigas, e é responsável por verificar as suas colisões e também o disparo de balas em direção ao player, e consante estes vãos endo destruidos novos são gerados, é também aqui se se faz o controlo do AI incluindo um métedo de raycast para evitar aasteroides. 
+	- Enemy.cs: Nesta classe temos definidos os objetos "inimigos", one está definido o construtor deste, o AI usando um método raycast para evitar colisões com asteroides, o disparo de bullets em direção ao player, e é responsável por verificar as colisões do inimigo com o player.
 	
+- **Bugs encontrados por resolver**
 
-- **Em falta**
-	
-	- Está implementado camara e os inimigos seguem o player, os asteroides podem ser destruídos, mas em caso de chocarem com o inimigo ou o player estes perdem vida.  
-	
-	- Não está implementado todos os sprites, menu, score e fim do jogo, sobre o fim do jogo ao chegar a zero a vida do player o jogo continua.
-
+	- Fazer reset da lista de asteroides e iminigos quando o player morre.
 
 # Melhorias:
 
-- Como melhorias poderia ser implemantado as já identificadas anteriormente, bem como incluir som e salvar o jogo de modo a continuar o o player terminou.
+- Aplicar uma textura 2D aos asteroides em vez de textura simples.
+
+- Implementar a lista de scores.  
 
 
 # Conclusão:
 
-- Este projeto foi desafiante, uma vez que a framework obriga a pensar com cuidado na sua implementação, pois não existe uma base como em outras frameworks do tipo unity. 
+- Este projeto foi desafiante, uma vez que a framework monogame obriga a pensar com cuidado na sua implementação, pois não existe uma base como em outras frameworks do género unity. 
 

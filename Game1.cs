@@ -447,7 +447,7 @@ namespace TDJ2_Astroidz
             _spriteBatch.Draw(playerTexture, new Vector2(screenCenter.X, screenCenter.Y), null, Color.White, playerRotation + MathHelper.PiOver2*2, playerOrigin, 1.0f, SpriteEffects.None, 0f);
 
 
-            // If the player is moving forward, draw the thrusters
+            //If the player is moving forward, draw the thrusters
             if (Vector3.Dot(inertia, forwardDirection) > 150)
             {
                 _spriteBatch.Draw(thrusterTexture, new Vector2(screenCenter.X, screenCenter.Y), null, Color.White, playerRotation + MathHelper.PiOver2 * 2, new Vector2(playerOrigin.X - 3, playerOrigin.Y - 40), 1.0f, SpriteEffects.None, 0f);

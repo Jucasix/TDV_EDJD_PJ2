@@ -46,13 +46,13 @@ namespace TDJ2_Astroidz
                 case 1:
                     HitPoints = 50;
                     Speed = 300;
-                    FireRate = 0.33f;
+                    FireRate = 0.4f;
                     spawnWeight = 100f;
                     break;
                 case 2:
                     HitPoints = 100;
                     Speed = 150;
-                    FireRate = 0.2f;
+                    FireRate = 0.25f;
                     spawnWeight = 30f;
                     break;
                 case 3:
