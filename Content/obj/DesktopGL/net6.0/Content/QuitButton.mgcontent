@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-  <SourceFile>C:/Users/HP/source/repos/TDJ2 Astroidz/Content/QuitButton.png</SourceFile>
-  <SourceTime>2024-05-22T14:48:52.4322406+01:00</SourceTime>
-  <DestFile>C:/Users/HP/source/repos/TDJ2 Astroidz/Content/bin/DesktopGL/Content/QuitButton.xnb</DestFile>
-  <DestTime>2024-05-22T14:51:24.8512641+01:00</DestTime>
+  <SourceFile>C:/Users/utilizador/OneDrive - Instituto Politécnico do Cávado e do Ave/01_Disciplinas/TDV/VS/TDV_EDJD_PJ2/TDV_EDJD_PJ2/Content/QuitButton.png</SourceFile>
+  <SourceTime>2024-05-22T14:48:54+01:00</SourceTime>
+  <DestFile>C:/Users/utilizador/OneDrive - Instituto Politécnico do Cávado e do Ave/01_Disciplinas/TDV/VS/TDV_EDJD_PJ2/TDV_EDJD_PJ2/Content/bin/DesktopGL/Content/QuitButton.xnb</DestFile>
+  <DestTime>2024-05-24T11:12:44.2683666+01:00</DestTime>
   <Importer>TextureImporter</Importer>
   <ImporterTime>2022-07-26T12:44:56+01:00</ImporterTime>
   <Processor>TextureProcessor</Processor>

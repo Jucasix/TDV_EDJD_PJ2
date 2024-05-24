@@ -39,3 +39,49 @@ C:\Users\HP\source\repos\TDJ2 Astroidz\bin\Debug\net6.0\Content\Star.xnb
 C:\Users\HP\source\repos\TDJ2 Astroidz\bin\Debug\net6.0\Content\plasmaShoot.xnb
 C:\Users\HP\source\repos\TDJ2 Astroidz\bin\Debug\net6.0\Content\wrong-place-129242.ogg
 C:\Users\HP\source\repos\TDJ2 Astroidz\bin\Debug\net6.0\Content\wrong-place-129242.xnb
+C:\Users\utilizador\OneDrive - Instituto Politécnico do Cávado e do Ave\01_Disciplinas\TDV\VS\TDV_EDJD_PJ2\TDV_EDJD_PJ2\bin\Debug\net6.0\Content\asteroid.png
+C:\Users\utilizador\OneDrive - Instituto Politécnico do Cávado e do Ave\01_Disciplinas\TDV\VS\TDV_EDJD_PJ2\TDV_EDJD_PJ2\bin\Debug\net6.0\Content\bin\DesktopGL\Content\asteroid.xnb
+C:\Users\utilizador\OneDrive - Instituto Politécnico do Cávado e do Ave\01_Disciplinas\TDV\VS\TDV_EDJD_PJ2\TDV_EDJD_PJ2\bin\Debug\net6.0\Content\bin\DesktopGL\Content\playerShip.xnb
+C:\Users\utilizador\OneDrive - Instituto Politécnico do Cávado e do Ave\01_Disciplinas\TDV\VS\TDV_EDJD_PJ2\TDV_EDJD_PJ2\bin\Debug\net6.0\Content\File.xnb
+C:\Users\utilizador\OneDrive - Instituto Politécnico do Cávado e do Ave\01_Disciplinas\TDV\VS\TDV_EDJD_PJ2\TDV_EDJD_PJ2\bin\Debug\net6.0\Content\playerShip.png
+C:\Users\utilizador\OneDrive - Instituto Politécnico do Cávado e do Ave\01_Disciplinas\TDV\VS\TDV_EDJD_PJ2\TDV_EDJD_PJ2\bin\Debug\net6.0\Content\Enemy01.xnb
+C:\Users\utilizador\OneDrive - Instituto Politécnico do Cávado e do Ave\01_Disciplinas\TDV\VS\TDV_EDJD_PJ2\TDV_EDJD_PJ2\bin\Debug\net6.0\Content\Enemy02.xnb
+C:\Users\utilizador\OneDrive - Instituto Politécnico do Cávado e do Ave\01_Disciplinas\TDV\VS\TDV_EDJD_PJ2\TDV_EDJD_PJ2\bin\Debug\net6.0\Content\plasmaShoot.xnb
+C:\Users\utilizador\OneDrive - Instituto Politécnico do Cávado e do Ave\01_Disciplinas\TDV\VS\TDV_EDJD_PJ2\TDV_EDJD_PJ2\bin\Debug\net6.0\Content\PlayButton.xnb
+C:\Users\utilizador\OneDrive - Instituto Politécnico do Cávado e do Ave\01_Disciplinas\TDV\VS\TDV_EDJD_PJ2\TDV_EDJD_PJ2\bin\Debug\net6.0\Content\Player01.xnb
+C:\Users\utilizador\OneDrive - Instituto Politécnico do Cávado e do Ave\01_Disciplinas\TDV\VS\TDV_EDJD_PJ2\TDV_EDJD_PJ2\bin\Debug\net6.0\Content\Projectile01.xnb
+C:\Users\utilizador\OneDrive - Instituto Politécnico do Cávado e do Ave\01_Disciplinas\TDV\VS\TDV_EDJD_PJ2\TDV_EDJD_PJ2\bin\Debug\net6.0\Content\Projectiles.xnb
+C:\Users\utilizador\OneDrive - Instituto Politécnico do Cávado e do Ave\01_Disciplinas\TDV\VS\TDV_EDJD_PJ2\TDV_EDJD_PJ2\bin\Debug\net6.0\Content\QuitButton.xnb
+C:\Users\utilizador\OneDrive - Instituto Politécnico do Cávado e do Ave\01_Disciplinas\TDV\VS\TDV_EDJD_PJ2\TDV_EDJD_PJ2\bin\Debug\net6.0\Content\Star.xnb
+C:\Users\utilizador\OneDrive - Instituto Politécnico do Cávado e do Ave\01_Disciplinas\TDV\VS\TDV_EDJD_PJ2\TDV_EDJD_PJ2\bin\Debug\net6.0\Content\Thruster01.xnb
+C:\Users\utilizador\OneDrive - Instituto Politécnico do Cávado e do Ave\01_Disciplinas\TDV\VS\TDV_EDJD_PJ2\TDV_EDJD_PJ2\bin\Debug\net6.0\Content\Thruster02.xnb
+C:\Users\utilizador\OneDrive - Instituto Politécnico do Cávado e do Ave\01_Disciplinas\TDV\VS\TDV_EDJD_PJ2\TDV_EDJD_PJ2\bin\Debug\net6.0\Content\Thursters.xnb
+C:\Users\utilizador\OneDrive - Instituto Politécnico do Cávado e do Ave\01_Disciplinas\TDV\VS\TDV_EDJD_PJ2\TDV_EDJD_PJ2\bin\Debug\net6.0\Content\UIFont.xnb
+C:\Users\utilizador\OneDrive - Instituto Politécnico do Cávado e do Ave\01_Disciplinas\TDV\VS\TDV_EDJD_PJ2\TDV_EDJD_PJ2\bin\Debug\net6.0\Content\wrong-place-129242.ogg
+C:\Users\utilizador\OneDrive - Instituto Politécnico do Cávado e do Ave\01_Disciplinas\TDV\VS\TDV_EDJD_PJ2\TDV_EDJD_PJ2\bin\Debug\net6.0\Content\wrong-place-129242.xnb
+C:\Users\utilizador\OneDrive - Instituto Politécnico do Cávado e do Ave\01_Disciplinas\TDV\VS\TDV_EDJD_PJ2\TDV_EDJD_PJ2\bin\Debug\net6.0\TDJ2 Astroidz.exe
+C:\Users\utilizador\OneDrive - Instituto Politécnico do Cávado e do Ave\01_Disciplinas\TDV\VS\TDV_EDJD_PJ2\TDV_EDJD_PJ2\bin\Debug\net6.0\TDJ2 Astroidz.deps.json
+C:\Users\utilizador\OneDrive - Instituto Politécnico do Cávado e do Ave\01_Disciplinas\TDV\VS\TDV_EDJD_PJ2\TDV_EDJD_PJ2\bin\Debug\net6.0\TDJ2 Astroidz.runtimeconfig.json
+C:\Users\utilizador\OneDrive - Instituto Politécnico do Cávado e do Ave\01_Disciplinas\TDV\VS\TDV_EDJD_PJ2\TDV_EDJD_PJ2\bin\Debug\net6.0\TDJ2 Astroidz.dll
+C:\Users\utilizador\OneDrive - Instituto Politécnico do Cávado e do Ave\01_Disciplinas\TDV\VS\TDV_EDJD_PJ2\TDV_EDJD_PJ2\bin\Debug\net6.0\TDJ2 Astroidz.pdb
+C:\Users\utilizador\OneDrive - Instituto Politécnico do Cávado e do Ave\01_Disciplinas\TDV\VS\TDV_EDJD_PJ2\TDV_EDJD_PJ2\bin\Debug\net6.0\MonoGame.Framework.dll
+C:\Users\utilizador\OneDrive - Instituto Politécnico do Cávado e do Ave\01_Disciplinas\TDV\VS\TDV_EDJD_PJ2\TDV_EDJD_PJ2\bin\Debug\net6.0\runtimes\linux-x64\native\libSDL2-2.0.so.0
+C:\Users\utilizador\OneDrive - Instituto Politécnico do Cávado e do Ave\01_Disciplinas\TDV\VS\TDV_EDJD_PJ2\TDV_EDJD_PJ2\bin\Debug\net6.0\runtimes\linux-x64\native\libopenal.so.1
+C:\Users\utilizador\OneDrive - Instituto Politécnico do Cávado e do Ave\01_Disciplinas\TDV\VS\TDV_EDJD_PJ2\TDV_EDJD_PJ2\bin\Debug\net6.0\runtimes\osx\native\libSDL2.dylib
+C:\Users\utilizador\OneDrive - Instituto Politécnico do Cávado e do Ave\01_Disciplinas\TDV\VS\TDV_EDJD_PJ2\TDV_EDJD_PJ2\bin\Debug\net6.0\runtimes\osx\native\libopenal.1.dylib
+C:\Users\utilizador\OneDrive - Instituto Politécnico do Cávado e do Ave\01_Disciplinas\TDV\VS\TDV_EDJD_PJ2\TDV_EDJD_PJ2\bin\Debug\net6.0\runtimes\win-x64\native\SDL2.dll
+C:\Users\utilizador\OneDrive - Instituto Politécnico do Cávado e do Ave\01_Disciplinas\TDV\VS\TDV_EDJD_PJ2\TDV_EDJD_PJ2\bin\Debug\net6.0\runtimes\win-x64\native\soft_oal.dll
+C:\Users\utilizador\OneDrive - Instituto Politécnico do Cávado e do Ave\01_Disciplinas\TDV\VS\TDV_EDJD_PJ2\TDV_EDJD_PJ2\bin\Debug\net6.0\runtimes\win-x86\native\SDL2.dll
+C:\Users\utilizador\OneDrive - Instituto Politécnico do Cávado e do Ave\01_Disciplinas\TDV\VS\TDV_EDJD_PJ2\TDV_EDJD_PJ2\bin\Debug\net6.0\runtimes\win-x86\native\soft_oal.dll
+C:\Users\utilizador\OneDrive - Instituto Politécnico do Cávado e do Ave\01_Disciplinas\TDV\VS\TDV_EDJD_PJ2\TDV_EDJD_PJ2\obj\Debug\net6.0\TDJ2 Astroidz.csproj.AssemblyReference.cache
+C:\Users\utilizador\OneDrive - Instituto Politécnico do Cávado e do Ave\01_Disciplinas\TDV\VS\TDV_EDJD_PJ2\TDV_EDJD_PJ2\obj\Debug\net6.0\TDJ2 Astroidz.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\utilizador\OneDrive - Instituto Politécnico do Cávado e do Ave\01_Disciplinas\TDV\VS\TDV_EDJD_PJ2\TDV_EDJD_PJ2\obj\Debug\net6.0\TDJ2 Astroidz.AssemblyInfoInputs.cache
+C:\Users\utilizador\OneDrive - Instituto Politécnico do Cávado e do Ave\01_Disciplinas\TDV\VS\TDV_EDJD_PJ2\TDV_EDJD_PJ2\obj\Debug\net6.0\TDJ2 Astroidz.AssemblyInfo.cs
+C:\Users\utilizador\OneDrive - Instituto Politécnico do Cávado e do Ave\01_Disciplinas\TDV\VS\TDV_EDJD_PJ2\TDV_EDJD_PJ2\obj\Debug\net6.0\TDJ2 Astroidz.csproj.CoreCompileInputs.cache
+C:\Users\utilizador\OneDrive - Instituto Politécnico do Cávado e do Ave\01_Disciplinas\TDV\VS\TDV_EDJD_PJ2\TDV_EDJD_PJ2\obj\Debug\net6.0\TDJ2 Astroidz.sourcelink.json
+C:\Users\utilizador\OneDrive - Instituto Politécnico do Cávado e do Ave\01_Disciplinas\TDV\VS\TDV_EDJD_PJ2\TDV_EDJD_PJ2\obj\Debug\net6.0\TDJ2 Ast.FDD874EE.Up2Date
+C:\Users\utilizador\OneDrive - Instituto Politécnico do Cávado e do Ave\01_Disciplinas\TDV\VS\TDV_EDJD_PJ2\TDV_EDJD_PJ2\obj\Debug\net6.0\TDJ2 Astroidz.dll
+C:\Users\utilizador\OneDrive - Instituto Politécnico do Cávado e do Ave\01_Disciplinas\TDV\VS\TDV_EDJD_PJ2\TDV_EDJD_PJ2\obj\Debug\net6.0\refint\TDJ2 Astroidz.dll
+C:\Users\utilizador\OneDrive - Instituto Politécnico do Cávado e do Ave\01_Disciplinas\TDV\VS\TDV_EDJD_PJ2\TDV_EDJD_PJ2\obj\Debug\net6.0\TDJ2 Astroidz.pdb
+C:\Users\utilizador\OneDrive - Instituto Politécnico do Cávado e do Ave\01_Disciplinas\TDV\VS\TDV_EDJD_PJ2\TDV_EDJD_PJ2\obj\Debug\net6.0\TDJ2 Astroidz.genruntimeconfig.cache
+C:\Users\utilizador\OneDrive - Instituto Politécnico do Cávado e do Ave\01_Disciplinas\TDV\VS\TDV_EDJD_PJ2\TDV_EDJD_PJ2\obj\Debug\net6.0\ref\TDJ2 Astroidz.dll

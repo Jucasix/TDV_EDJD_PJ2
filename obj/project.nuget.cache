@@ -1,11 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "cbRLmDJC7JLkJbiAcstywjNy2X5xry5SouY3oHrcXf/zQXiItOrcHDUCmTP04bxFR28X8zI25Swah8oQoNhgUw==",
+  "dgSpecHash": "3gbiXW1WClnNxkf9tCmRd/Jmx2E3WOUgSemFirjQI00TCCTcn1Whn1kkX8SFSlB2G8MdfRGO5Sk3tkmUhi7b2Q==",
   "success": true,
-  "projectFilePath": "C:\\Users\\HP\\source\\repos\\TDJ2 Astroidz\\TDJ2 Astroidz.csproj",
+  "projectFilePath": "C:\\Users\\utilizador\\OneDrive - Instituto Politécnico do Cávado e do Ave\\01_Disciplinas\\TDV\\VS\\TDV_EDJD_PJ2\\TDV_EDJD_PJ2\\TDJ2 Astroidz.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\HP\\.nuget\\packages\\monogame.content.builder.task\\3.8.1.303\\monogame.content.builder.task.3.8.1.303.nupkg.sha512",
-    "C:\\Users\\HP\\.nuget\\packages\\monogame.framework.desktopgl\\3.8.1.303\\monogame.framework.desktopgl.3.8.1.303.nupkg.sha512"
+    "C:\\Users\\utilizador\\.nuget\\packages\\monogame.content.builder.task\\3.8.1.303\\monogame.content.builder.task.3.8.1.303.nupkg.sha512",
+    "C:\\Users\\utilizador\\.nuget\\packages\\monogame.framework.desktopgl\\3.8.1.303\\monogame.framework.desktopgl.3.8.1.303.nupkg.sha512"
   ],
   "logs": []
 }

@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("TDJ2 Astroidz")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+5514b865a5708be12520e5db790a7e9ec1f176ee")]
 [assembly: System.Reflection.AssemblyProductAttribute("TDJ2 Astroidz")]
 [assembly: System.Reflection.AssemblyTitleAttribute("TDJ2 Astroidz")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

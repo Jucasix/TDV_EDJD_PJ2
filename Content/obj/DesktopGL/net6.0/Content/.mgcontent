@@ -4,20 +4,20 @@
   <Platform>DesktopGL</Platform>
   <Config />
   <SourceFiles>
-    <File>C:/Users/HP/source/repos/TDJ2 Astroidz/Content/Enemy01.png</File>
-    <File>C:/Users/HP/source/repos/TDJ2 Astroidz/Content/Enemy02.png</File>
-    <File>C:/Users/HP/source/repos/TDJ2 Astroidz/Content/File.spritefont</File>
-    <File>C:/Users/HP/source/repos/TDJ2 Astroidz/Content/plasmaShoot.wav</File>
-    <File>C:/Users/HP/source/repos/TDJ2 Astroidz/Content/PlayButton.png</File>
-    <File>C:/Users/HP/source/repos/TDJ2 Astroidz/Content/Player01.png</File>
-    <File>C:/Users/HP/source/repos/TDJ2 Astroidz/Content/Projectile01.png</File>
-    <File>C:/Users/HP/source/repos/TDJ2 Astroidz/Content/Projectiles.png</File>
-    <File>C:/Users/HP/source/repos/TDJ2 Astroidz/Content/QuitButton.png</File>
-    <File>C:/Users/HP/source/repos/TDJ2 Astroidz/Content/Star.png</File>
-    <File>C:/Users/HP/source/repos/TDJ2 Astroidz/Content/Thruster01.png</File>
-    <File>C:/Users/HP/source/repos/TDJ2 Astroidz/Content/Thruster02.png</File>
-    <File>C:/Users/HP/source/repos/TDJ2 Astroidz/Content/Thursters.png</File>
-    <File>C:/Users/HP/source/repos/TDJ2 Astroidz/Content/wrong-place-129242.mp3</File>
+    <File>C:/Users/utilizador/OneDrive - Instituto Politécnico do Cávado e do Ave/01_Disciplinas/TDV/VS/TDV_EDJD_PJ2/TDV_EDJD_PJ2/Content/Enemy01.png</File>
+    <File>C:/Users/utilizador/OneDrive - Instituto Politécnico do Cávado e do Ave/01_Disciplinas/TDV/VS/TDV_EDJD_PJ2/TDV_EDJD_PJ2/Content/Enemy02.png</File>
+    <File>C:/Users/utilizador/OneDrive - Instituto Politécnico do Cávado e do Ave/01_Disciplinas/TDV/VS/TDV_EDJD_PJ2/TDV_EDJD_PJ2/Content/File.spritefont</File>
+    <File>C:/Users/utilizador/OneDrive - Instituto Politécnico do Cávado e do Ave/01_Disciplinas/TDV/VS/TDV_EDJD_PJ2/TDV_EDJD_PJ2/Content/plasmaShoot.wav</File>
+    <File>C:/Users/utilizador/OneDrive - Instituto Politécnico do Cávado e do Ave/01_Disciplinas/TDV/VS/TDV_EDJD_PJ2/TDV_EDJD_PJ2/Content/PlayButton.png</File>
+    <File>C:/Users/utilizador/OneDrive - Instituto Politécnico do Cávado e do Ave/01_Disciplinas/TDV/VS/TDV_EDJD_PJ2/TDV_EDJD_PJ2/Content/Player01.png</File>
+    <File>C:/Users/utilizador/OneDrive - Instituto Politécnico do Cávado e do Ave/01_Disciplinas/TDV/VS/TDV_EDJD_PJ2/TDV_EDJD_PJ2/Content/Projectile01.png</File>
+    <File>C:/Users/utilizador/OneDrive - Instituto Politécnico do Cávado e do Ave/01_Disciplinas/TDV/VS/TDV_EDJD_PJ2/TDV_EDJD_PJ2/Content/Projectiles.png</File>
+    <File>C:/Users/utilizador/OneDrive - Instituto Politécnico do Cávado e do Ave/01_Disciplinas/TDV/VS/TDV_EDJD_PJ2/TDV_EDJD_PJ2/Content/QuitButton.png</File>
+    <File>C:/Users/utilizador/OneDrive - Instituto Politécnico do Cávado e do Ave/01_Disciplinas/TDV/VS/TDV_EDJD_PJ2/TDV_EDJD_PJ2/Content/Star.png</File>
+    <File>C:/Users/utilizador/OneDrive - Instituto Politécnico do Cávado e do Ave/01_Disciplinas/TDV/VS/TDV_EDJD_PJ2/TDV_EDJD_PJ2/Content/Thruster01.png</File>
+    <File>C:/Users/utilizador/OneDrive - Instituto Politécnico do Cávado e do Ave/01_Disciplinas/TDV/VS/TDV_EDJD_PJ2/TDV_EDJD_PJ2/Content/Thruster02.png</File>
+    <File>C:/Users/utilizador/OneDrive - Instituto Politécnico do Cávado e do Ave/01_Disciplinas/TDV/VS/TDV_EDJD_PJ2/TDV_EDJD_PJ2/Content/Thursters.png</File>
+    <File>C:/Users/utilizador/OneDrive - Instituto Politécnico do Cávado e do Ave/01_Disciplinas/TDV/VS/TDV_EDJD_PJ2/TDV_EDJD_PJ2/Content/wrong-place-129242.mp3</File>
   </SourceFiles>
   <DestFiles>
     <File xsi:nil="true" />
