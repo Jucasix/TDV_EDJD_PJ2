@@ -28,7 +28,7 @@
 
 - **Mundo**
 	
-	- O mundo é em plano aberto e não tem nenhum sprite associado, as estralas decorativas são geradas aleatóriamente no inicio do jogo.  
+	- O mundo é em plano aberto 2D, com um background decorativo de estrelas (geradas aleatóriamente). O player pode mover em qualquer direção deste plano, e a "camera" segue o Player, podendo ter objetos a correr fora da camara (Se asteroídes ou Bullets estiverem a mais de 2 ecrãs de distância, eles são desativados e consequentemente removidos)  
 
 - **Classes:**
 
